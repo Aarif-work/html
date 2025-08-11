@@ -23,43 +23,57 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.2rem 3rem;
     max-width: 1200px;
     margin: 0 auto;
-    background: linear-gradient(135deg, #a796ce 0%, #82c6cf 100%);
-    border-radius: 0 0 20px 20px;
+    background: #ffffff;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #2c3e50;
 }
 
 nav h1 {
-    color: white;
-    font-size: 2rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-    font-weight: bold;
+    color: #2c3e50;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 nav ul {
     display: flex;
     list-style: none;
-    gap: 2rem;
-    background: rgba(255,255,255,0.1);
-    padding: 0.5rem 1rem;
-    border-radius: 25px;
-    backdrop-filter: blur(10px);
+    gap: 2.5rem;
 }
 
 nav a {
     text-decoration: none;
-    color: white;
+    color: #2c3e50;
     font-weight: 600;
-    padding: 0.5rem 1rem;
-    border-radius: 15px;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
     transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #3498db;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
 }
 
 nav a:hover {
-    background: rgba(255,255,255,0.2);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: #3498db;
+    background: rgba(52,152,219,0.1);
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 .hero {
