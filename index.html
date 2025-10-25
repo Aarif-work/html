@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Aarif - Home</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -18,62 +19,101 @@
         </nav>
     </header>
     
-    <section class="hero">
+    <section id="hero">
         <div class="hero-content">
-            <img src="asserts/images/profile.png" alt="Profile Picture" class="profile-img">
-            <h2>Welcome to My Website</h2>
-            <p>Flutter Developer & Programmer</p>
+            <div class="hero-text">
+                <h2>Welcome to My Website</h2>
+                <p>Flutter Developer & Programmer</p>
+                <div class="hero-buttons">
+                    <a href="portfolio.html" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="asserts/images/profile.png" alt="Profile Picture" class="profile-img">
+            </div>
         </div>
     </section>
     
-    <main>
-        <section class="intro">
-            <div class="intro-content">
-                <div class="intro-text">
-                    <h2>Hello, I'm Mohamed Aarif</h2>
-                    <p>Proficient in C, C++, and Dart with Object-Oriented Programming (OOP); currently focused on Flutter development with hands-on experience in building responsive and user-friendly UI.</p>
+    <section id="about">
+        <div class="container">
+            <h2>Hello, I'm Mohamed Aarif</h2>
+            <div class="about-content">
+                <p>Proficient in C, C++, and Dart with Object-Oriented Programming (OOP); currently focused on Flutter development with hands-on experience in building responsive and user-friendly UI.</p>
+                <div class="cta-section">
                     <a href="portfolio.html" class="cta-btn">View My Work</a>
                 </div>
             </div>
-        </section>
-        
-        <section class="services">
+        </div>
+    </section>
+    
+    <section id="skills">
+        <div class="container">
             <h2>Technical Skills</h2>
-            <div class="service-grid">
-                <div class="service-card">
+            <div class="project-grid">
+                <div class="project-card clickable">
                     <h3>Programming Languages</h3>
                     <p>C, C++, Python, HTML, Dart</p>
+                    <div class="card-arrow">→</div>
                 </div>
-                <div class="service-card">
+                <div class="project-card clickable">
                     <h3>Flutter Development</h3>
                     <p>Building responsive mobile applications</p>
+                    <div class="card-arrow">→</div>
                 </div>
-                <div class="service-card">
+                <div class="project-card clickable">
                     <h3>Problem Solving</h3>
                     <p>Logical thinking & computational skills</p>
+                    <div class="card-arrow">→</div>
                 </div>
             </div>
-            
-            <div class="contact-info">
-                <h2>Contact Information</h2>
-                <p>📍 Karaikudi, Tamil Nadu 630001</p>
-                <p>📧 mohamedaarif@gmail.com</p>
-                <p>💼 <a href="https://www.linkedin.com/in/moham-mad-aarif-321369306/" target="_blank">LinkedIn Profile</a></p>
-            </div>
-            
-            <div class="achievements">
-                <h2>Achievements</h2>
-                <ul>
-                    <li>Cracked the IITM online program entrance exam</li>
-                    <li>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</li>
-                    <li>Strong problem-solving skills with MySQL database knowledge</li>
-                </ul>
-            </div>
-        </section>
-    </main>
+        </div>
+    </section>
     
-    <footer>
-        <p>&copy; 2024 Mohamed Aarif. All rights reserved.</p>
-    </footer>
+    <section id="achievements">
+        <div class="container">
+            <h2>Key Achievements</h2>
+            <div class="achievement-grid">
+                <div class="achievement-card clickable" onclick="window.location.href='achievements.html'">
+                    <h3>IIT Madras Entrance</h3>
+                    <p>Cracked the IITM online program entrance exam</p>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="achievement-card clickable" onclick="window.location.href='achievements.html'">
+                    <h3>Grade A Achievement</h3>
+                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</p>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="achievement-card clickable" onclick="window.location.href='achievements.html'">
+                    <h3>Technical Excellence</h3>
+                    <p>Strong problem-solving skills with MySQL database knowledge</p>
+                    <div class="card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Information</h2>
+            <div class="contact-grid">
+                <div class="contact-item clickable">
+                    <strong>Location</strong>
+                    <p>Karaikudi, Tamil Nadu 630001</p>
+                    <div class="contact-icon">📍</div>
+                </div>
+                <div class="contact-item clickable" onclick="window.location.href='mailto:mohamedaarif@gmail.com'">
+                    <strong>Email</strong>
+                    <p>mohamedaarif@gmail.com</p>
+                    <div class="contact-icon">📧</div>
+                </div>
+                <div class="contact-item clickable" onclick="window.open('https://www.linkedin.com/in/mohammad-aarif-321369306/', '_blank')">
+                    <strong>LinkedIn</strong>
+                    <p>View Profile</p>
+                    <div class="contact-icon">💼</div>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html>

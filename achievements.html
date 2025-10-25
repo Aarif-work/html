@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Aarif - Achievements</title>
-    <link rel="stylesheet" href="achievements.css">
+    <link rel="stylesheet" href="portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -18,81 +19,157 @@
         </nav>
     </header>
 
-    <section class="hero">
+    <section id="hero">
         <div class="hero-content">
-            <img src="asserts/images/profile.png" alt="Profile Picture" class="profile-img">
-            <h2>My Achievements</h2>
-            <p>Academic Excellence & Technical Milestones</p>
+            <div class="hero-text">
+                <h2>My Achievements</h2>
+                <p>Academic Excellence & Technical Milestones</p>
+                <div class="hero-buttons">
+                    <a href="portfolio.html" class="btn-primary">View Projects</a>
+                    <a href="#contact" class="btn-secondary">Contact Me</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="asserts/images/profile.png" alt="Profile Picture" class="profile-img">
+            </div>
         </div>
     </section>
 
-    <main>
-        <section class="achievements-intro">
-            <div class="container">
-                <h2>IIT Madras Achievements</h2>
-                <p>Showcasing my academic journey and accomplishments at IIT Madras Data Science Program</p>
+    <section id="about">
+        <div class="container">
+            <h2>IIT Madras Journey</h2>
+            <div class="about-content">
+                <p>Showcasing my academic journey and accomplishments at IIT Madras Data Science Program. These achievements represent my dedication to excellence in computational thinking and technical skills development.</p>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="achievement-gallery">
-            <div class="container">
-                <div class="gallery-grid">
-                    <div class="achievement-item">
-                        <img src="asserts/Achievement/iit/IMG-20250809-WA0007.jpg" alt="IIT Achievement 1">
-                        <div class="achievement-overlay">
-                            <h3>Program Entrance</h3>
-                            <p>Successfully cleared IIT Madras entrance exam</p>
-                        </div>
+    <section id="gallery">
+        <div class="container">
+            <h2>Achievement Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-card" onclick="openModal(0)">
+                    <img src="asserts/Achievement/iit/IMG-20250809-WA0007.jpg" alt="Program Entrance">
+                    <div class="card-content">
+                        <h3>Program Entrance</h3>
+                        <p>Successfully cleared IIT Madras entrance exam</p>
                     </div>
-                    <div class="achievement-item">
-                        <img src="asserts/Achievement/iit/IMG-20250809-WA0008.jpg" alt="IIT Achievement 2">
-                        <div class="achievement-overlay">
-                            <h3>Prof. Kamakoti - Director, IIT Madras</h3>
-                            <p>Prof. Kamakoti is currently Director of IIT Madras (2022-). He is a full-time Professor in Computer Science and Engineering, member of National Security Advisory Board, with expertise in Computer Architecture, Secure Systems Engineering and VLSI Design.</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <img src="asserts/Achievement/iit/IMG-20250809-WA0009.jpg" alt="IIT Achievement 3">
-                        <div class="achievement-overlay">
-                            <h3>Data Science Program</h3>
-                            <p>IIT Madras Data Science specialization</p>
-                        </div>
-                    </div>
-                    <div class="achievement-item">
-                        <img src="asserts/Achievement/iit/IMG-20250809-WA0010.jpg" alt="IIT Achievement 4">
-                        <div class="achievement-overlay">
-                            <h3>Academic Recognition</h3>
-                            <p>Outstanding performance certificate</p>
-                        </div>
-                    </div>
-
                 </div>
-            </div>
-        </section>
-
-        <section class="achievement-summary">
-            <div class="container">
-                <h2>Key Accomplishments</h2>
-                <div class="summary-grid">
-                    <div class="summary-card">
-                        <h3>🎓 IIT Madras Entrance</h3>
-                        <p>Successfully cracked the prestigious IIT Madras online program entrance examination</p>
+                <div class="gallery-card" onclick="openModal(1)">
+                    <img src="asserts/Achievement/iit/IMG-20250809-WA0008.jpg" alt="IIT Madras Leadership">
+                    <div class="card-content">
+                        <h3>IIT Madras Leadership</h3>
+                        <p>Prof. Kamakoti - Director, IIT Madras with expertise in Computer Architecture and Secure Systems</p>
                     </div>
-                    <div class="summary-card">
-                        <h3>⭐ Grade A Achievement</h3>
-                        <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</p>
+                </div>
+                <div class="gallery-card" onclick="openModal(2)">
+                    <img src="asserts/Achievement/iit/IMG-20250809-WA0009.jpg" alt="Data Science Program">
+                    <div class="card-content">
+                        <h3>Data Science Program</h3>
+                        <p>IIT Madras Data Science specialization</p>
                     </div>
-                    <div class="summary-card">
-                        <h3>💻 Technical Excellence</h3>
-                        <p>Demonstrated strong problem-solving skills and computational thinking abilities</p>
+                </div>
+                <div class="gallery-card" onclick="openModal(3)">
+                    <img src="asserts/Achievement/iit/IMG-20250809-WA0010.jpg" alt="Academic Recognition">
+                    <div class="card-content">
+                        <h3>Academic Recognition</h3>
+                        <p>Outstanding performance certificate</p>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2024 Mohamed Aarif. All rights reserved.</p>
-    </footer>
+    <section id="achievements">
+        <div class="container">
+            <h2>Key Accomplishments</h2>
+            <div class="achievement-grid">
+                <div class="achievement-card clickable">
+                    <h3>IIT Madras Entrance</h3>
+                    <p>Successfully cracked the prestigious IIT Madras online program entrance examination</p>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="achievement-card clickable">
+                    <h3>Grade A Achievement</h3>
+                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</p>
+                    <div class="card-arrow">→</div>
+                </div>
+                <div class="achievement-card clickable">
+                    <h3>Technical Excellence</h3>
+                    <p>Demonstrated strong problem-solving skills and computational thinking abilities</p>
+                    <div class="card-arrow">→</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Modal -->
+    <div id="modal" class="modal" onclick="closeModal(event)">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-body">
+                <img id="modal-image" src="" alt="">
+                <div class="modal-text">
+                    <h2 id="modal-title"></h2>
+                    <p id="modal-description"></p>
+                    <a id="modal-link" href="" target="_blank" class="learn-more-btn">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const achievements = [
+            {
+                image: "asserts/Achievement/iit/IMG-20250809-WA0007.jpg",
+                title: "Program Entrance",
+                description: "Successfully cleared IIT Madras entrance exam",
+                link: "https://www.iitm.ac.in/"
+            },
+            {
+                image: "asserts/Achievement/iit/IMG-20250809-WA0008.jpg",
+                title: "IIT Madras Leadership",
+                description: "Prof. Kamakoti - Director, IIT Madras with expertise in Computer Architecture and Secure Systems",
+                link: "https://heritage.iitm.ac.in/directors-gallery/prof-v-kamakoti"
+            },
+            {
+                image: "asserts/Achievement/iit/IMG-20250809-WA0009.jpg",
+                title: "Data Science Program",
+                description: "IIT Madras Data Science specialization",
+                link: "https://study.iitm.ac.in/ds/"
+            },
+            {
+                image: "asserts/Achievement/iit/IMG-20250809-WA0010.jpg",
+                title: "Academic Recognition",
+                description: "Outstanding performance certificate",
+                link: "https://icandsr.iitm.ac.in/"
+            }
+        ];
+
+        function openModal(index) {
+            const modal = document.getElementById('modal');
+            const achievement = achievements[index];
+            
+            document.getElementById('modal-image').src = achievement.image;
+            document.getElementById('modal-title').textContent = achievement.title;
+            document.getElementById('modal-description').textContent = achievement.description;
+            document.getElementById('modal-link').href = achievement.link;
+            
+            modal.style.display = 'flex';
+            setTimeout(() => modal.classList.add('show'), 10);
+        }
+
+        function closeModal(event) {
+            if (event && event.target !== document.getElementById('modal')) return;
+            const modal = document.getElementById('modal');
+            modal.classList.remove('show');
+            setTimeout(() => modal.style.display = 'none', 300);
+        }
+
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
