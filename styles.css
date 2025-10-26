@@ -642,6 +642,34 @@ section {
     line-height: 1.7;
 }
 
+.special-achievement {
+    grid-column: span 2;
+}
+
+.achievement-images {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.gift-image {
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--accent-gold);
+}
+
+.prof-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--border-subtle);
+}
+
 @media (max-width: 768px) {
     .achievements-hero-title {
         font-size: 2.5rem;
@@ -672,6 +700,15 @@ section {
     .accomplishment-marker::after {
         width: 8px;
         height: 8px;
+    }
+
+    .special-achievement {
+        grid-column: span 1;
+    }
+
+    .achievement-images {
+        flex-direction: column;
+        gap: 0.5rem;
     }
 }
 
