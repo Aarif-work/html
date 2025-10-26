@@ -4,171 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mohamed Aarif - Achievements</title>
-    <link rel="stylesheet" href="portfolio.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Mohamed Aarif</h1>
-            <ul>
+            <div class="nav-brand">Mohamed Aarif</div>
+            <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="portfolio.html">My Work</a></li>
+                <li><a href="index.html#portfolio">Portfolio</a></li>
                 <li><a href="achievements.html" class="active">Achievements</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
-
-    <section id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2>My Achievements</h2>
-                <p>Academic Excellence & Technical Milestones</p>
-                <div class="hero-buttons">
-                    <a href="portfolio.html" class="btn-primary">View Projects</a>
-                    <a href="#contact" class="btn-secondary">Contact Me</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="asserts/images/profile.png" alt="Profile Picture" class="profile-img">
+    
+    <section id="achievements-hero">
+        <div class="achievements-hero-overlay">
+            <div class="container">
+                <h1 class="achievements-hero-title">IIT Madras Journey</h1>
+                <p class="achievements-hero-description">A testament to academic excellence and technical prowess in the field of data science and computational thinking</p>
             </div>
         </div>
     </section>
 
-    <section id="about">
+    <section id="achievement-gallery">
         <div class="container">
-            <h2>IIT Madras Journey</h2>
-            <div class="about-content">
-                <p>Showcasing my academic journey and accomplishments at IIT Madras Data Science Program. These achievements represent my dedication to excellence in computational thinking and technical skills development.</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="gallery">
-        <div class="container">
-            <h2>Achievement Gallery</h2>
-            <div class="gallery-grid">
-                <div class="gallery-card" onclick="openModal(0)">
-                    <img src="asserts/Achievement/iit/IMG-20250809-WA0007.jpg" alt="Program Entrance">
-                    <div class="card-content">
+            <div class="achievement-gallery-grid">
+                <div class="achievement-gallery-card">
+                    <div class="achievement-card-content">
+                        <div class="achievement-icon">🎓</div>
                         <h3>Program Entrance</h3>
-                        <p>Successfully cleared IIT Madras entrance exam</p>
+                        <p>Successfully cleared the competitive IIT Madras online degree program entrance examination</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openModal(1)">
-                    <img src="asserts/Achievement/iit/IMG-20250809-WA0008.jpg" alt="IIT Madras Leadership">
-                    <div class="card-content">
+                <div class="achievement-gallery-card">
+                    <div class="achievement-card-content">
+                        <div class="achievement-icon">👑</div>
                         <h3>IIT Madras Leadership</h3>
-                        <p>Prof. Kamakoti - Director, IIT Madras with expertise in Computer Architecture and Secure Systems</p>
+                        <p>Demonstrated exceptional leadership qualities and academic performance in the program</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openModal(2)">
-                    <img src="asserts/Achievement/iit/IMG-20250809-WA0009.jpg" alt="Data Science Program">
-                    <div class="card-content">
+                <div class="achievement-gallery-card">
+                    <div class="achievement-card-content">
+                        <div class="achievement-icon">📊</div>
                         <h3>Data Science Program</h3>
-                        <p>IIT Madras Data Science specialization</p>
+                        <p>Enrolled in the prestigious IIT Madras Data Science and Programming degree program</p>
                     </div>
                 </div>
-                <div class="gallery-card" onclick="openModal(3)">
-                    <img src="asserts/Achievement/iit/IMG-20250809-WA0010.jpg" alt="Academic Recognition">
-                    <div class="card-content">
+                <div class="achievement-gallery-card">
+                    <div class="achievement-card-content">
+                        <div class="achievement-icon">🏆</div>
                         <h3>Academic Recognition</h3>
-                        <p>Outstanding performance certificate</p>
+                        <p>Achieved Grade A in Computational Thinking, showcasing strong analytical and programming skills</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="achievements">
+    <section id="key-accomplishments">
         <div class="container">
-            <h2>Key Accomplishments</h2>
-            <div class="achievement-grid">
-                <div class="achievement-card clickable">
-                    <h3>IIT Madras Entrance</h3>
-                    <p>Successfully cracked the prestigious IIT Madras online program entrance examination</p>
-                    <div class="card-arrow">→</div>
+            <h2 class="section-title">Key Accomplishments</h2>
+            <div class="accomplishments-list">
+                <div class="accomplishment-item">
+                    <div class="accomplishment-marker"></div>
+                    <div class="accomplishment-content">
+                        <h3>IIT Madras Entrance Success</h3>
+                        <p>Cracked the highly competitive entrance examination for IIT Madras online degree program, demonstrating exceptional academic capabilities and problem-solving skills.</p>
+                    </div>
                 </div>
-                <div class="achievement-card clickable">
-                    <h3>Grade A Achievement</h3>
-                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</p>
-                    <div class="card-arrow">→</div>
+                <div class="accomplishment-item">
+                    <div class="accomplishment-marker"></div>
+                    <div class="accomplishment-content">
+                        <h3>Grade A in Computational Thinking</h3>
+                        <p>Secured Grade A in the Computational Thinking course under IIT Madras Data Science program, showcasing strong analytical and programming fundamentals.</p>
+                    </div>
                 </div>
-                <div class="achievement-card clickable">
-                    <h3>Technical Excellence</h3>
-                    <p>Demonstrated strong problem-solving skills and computational thinking abilities</p>
-                    <div class="card-arrow">→</div>
+                <div class="accomplishment-item">
+                    <div class="accomplishment-marker"></div>
+                    <div class="accomplishment-content">
+                        <h3>Technical Excellence</h3>
+                        <p>Developed comprehensive skills in programming languages including C, C++, Python, and Dart, with specialized expertise in Flutter development and MySQL database management.</p>
+                    </div>
+                </div>
+                <div class="accomplishment-item">
+                    <div class="accomplishment-marker"></div>
+                    <div class="accomplishment-content">
+                        <h3>Innovation in IoT</h3>
+                        <p>Created Electronic Nadi Pariksha Wearable Device, an innovative IoT-based health monitoring system inspired by Ayurvedic pulse diagnosis principles.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-    <!-- Modal -->
-    <div id="modal" class="modal" onclick="closeModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div class="modal-body">
-                <img id="modal-image" src="" alt="">
-                <div class="modal-text">
-                    <h2 id="modal-title"></h2>
-                    <p id="modal-description"></p>
-                    <a id="modal-link" href="" target="_blank" class="learn-more-btn">Learn More</a>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
-        const achievements = [
-            {
-                image: "asserts/Achievement/iit/IMG-20250809-WA0007.jpg",
-                title: "Program Entrance",
-                description: "Successfully cleared IIT Madras entrance exam",
-                link: "https://www.iitm.ac.in/"
-            },
-            {
-                image: "asserts/Achievement/iit/IMG-20250809-WA0008.jpg",
-                title: "IIT Madras Leadership",
-                description: "Prof. Kamakoti - Director, IIT Madras with expertise in Computer Architecture and Secure Systems",
-                link: "https://heritage.iitm.ac.in/directors-gallery/prof-v-kamakoti"
-            },
-            {
-                image: "asserts/Achievement/iit/IMG-20250809-WA0009.jpg",
-                title: "Data Science Program",
-                description: "IIT Madras Data Science specialization",
-                link: "https://study.iitm.ac.in/ds/"
-            },
-            {
-                image: "asserts/Achievement/iit/IMG-20250809-WA0010.jpg",
-                title: "Academic Recognition",
-                description: "Outstanding performance certificate",
-                link: "https://icandsr.iitm.ac.in/"
-            }
-        ];
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        function openModal(index) {
-            const modal = document.getElementById('modal');
-            const achievement = achievements[index];
-            
-            document.getElementById('modal-image').src = achievement.image;
-            document.getElementById('modal-title').textContent = achievement.title;
-            document.getElementById('modal-description').textContent = achievement.description;
-            document.getElementById('modal-link').href = achievement.link;
-            
-            modal.style.display = 'flex';
-            setTimeout(() => modal.classList.add('show'), 10);
-        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
 
-        function closeModal(event) {
-            if (event && event.target !== document.getElementById('modal')) return;
-            const modal = document.getElementById('modal');
-            modal.classList.remove('show');
-            setTimeout(() => modal.style.display = 'none', 300);
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
+        document.querySelectorAll('.achievement-gallery-card, .accomplishment-item').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>

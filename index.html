@@ -3,68 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Aarif - Home</title>
-    <link rel="stylesheet" href="portfolio.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <title>Mohamed Aarif - Flutter Developer</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <h1>Mohamed Aarif </h1>
-            <ul>
-                <li><a href="index.html" class="active">Home</a></li>
-                <li><a href="portfolio.html">My Work</a></li>
+            <div class="nav-brand">Mohamed Aarif</div>
+            <ul class="nav-links">
+                <li><a href="#hero" class="active">Home</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
                 <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     
     <section id="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h2>Welcome to My Website</h2>
-                <p>Flutter Developer & Programmer</p>
-                <div class="hero-buttons">
-                    <a href="portfolio.html" class="btn-primary">View My Work</a>
-                    <a href="#contact" class="btn-secondary">Get In Touch</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <img src="asserts/images/profile.png" alt="Profile Picture" class="profile-img">
-            </div>
-        </div>
-    </section>
-    
-    <section id="about">
-        <div class="container">
-            <h2>Hello, I'm Mohamed Aarif</h2>
-            <div class="about-content">
-                <p>Proficient in C, C++, and Dart with Object-Oriented Programming (OOP); currently focused on Flutter development with hands-on experience in building responsive and user-friendly UI.</p>
-                <div class="cta-section">
-                    <a href="portfolio.html" class="cta-btn">View My Work</a>
-                </div>
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <h1 class="hero-name">Mohamed Aarif</h1>
+                <h2 class="hero-title">Flutter Developer & Programmer</h2>
+                <p class="hero-tagline">Crafting elegant mobile experiences with modern technology</p>
+                <a href="#portfolio" class="hero-cta">
+                    <span>Portfolio</span>
+                    <svg class="arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
     
-    <section id="skills">
+    <section id="portfolio">
         <div class="container">
-            <h2>Technical Skills</h2>
-            <div class="project-grid">
-                <div class="project-card clickable">
-                    <h3>Programming Languages</h3>
-                    <p>C, C++, Python, HTML, Dart</p>
-                    <div class="card-arrow">→</div>
+            <h2 class="section-title">Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Flutter Development</h3>
+                        <p>Building responsive and user-friendly mobile applications with modern UI/UX design</p>
+                        <div class="tech-stack">
+                            <span>Flutter</span>
+                            <span>Dart</span>
+                            <span>Firebase</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card clickable">
-                    <h3>Flutter Development</h3>
-                    <p>Building responsive mobile applications</p>
-                    <div class="card-arrow">→</div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>IoT Development</h3>
+                        <p>Electronic Nadi Pariksha Wearable Device - IoT-based health monitoring system</p>
+                        <div class="tech-stack">
+                            <span>IoT</span>
+                            <span>C++</span>
+                            <span>Sensors</span>
+                        </div>
+                    </div>
                 </div>
-                <div class="project-card clickable">
-                    <h3>Problem Solving</h3>
-                    <p>Logical thinking & computational skills</p>
-                    <div class="card-arrow">→</div>
+                <div class="portfolio-card">
+                    <div class="card-content">
+                        <h3>Problem Solving</h3>
+                        <p>Strong algorithmic thinking and computational problem-solving skills</p>
+                        <div class="tech-stack">
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>MySQL</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,22 +79,22 @@
     
     <section id="achievements">
         <div class="container">
-            <h2>Key Achievements</h2>
-            <div class="achievement-grid">
-                <div class="achievement-card clickable" onclick="window.location.href='achievements.html'">
+            <h2 class="section-title">Achievements</h2>
+            <div class="achievements-grid">
+                <div class="achievement-item">
+                    <div class="achievement-number">01</div>
                     <h3>IIT Madras Entrance</h3>
-                    <p>Cracked the IITM online program entrance exam</p>
-                    <div class="card-arrow">→</div>
+                    <p>Successfully cracked the IITM online program entrance examination</p>
                 </div>
-                <div class="achievement-card clickable" onclick="window.location.href='achievements.html'">
+                <div class="achievement-item">
+                    <div class="achievement-number">02</div>
                     <h3>Grade A Achievement</h3>
                     <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</p>
-                    <div class="card-arrow">→</div>
                 </div>
-                <div class="achievement-card clickable" onclick="window.location.href='achievements.html'">
+                <div class="achievement-item">
+                    <div class="achievement-number">03</div>
                     <h3>Technical Excellence</h3>
-                    <p>Strong problem-solving skills with MySQL database knowledge</p>
-                    <div class="card-arrow">→</div>
+                    <p>Strong problem-solving skills with comprehensive MySQL database knowledge</p>
                 </div>
             </div>
         </div>
@@ -95,25 +102,53 @@
     
     <section id="contact">
         <div class="container">
-            <h2>Contact Information</h2>
-            <div class="contact-grid">
-                <div class="contact-item clickable">
-                    <strong>Location</strong>
-                    <p>Karaikudi, Tamil Nadu 630001</p>
-                    <div class="contact-icon">📍</div>
-                </div>
-                <div class="contact-item clickable" onclick="window.location.href='mailto:mohamedaarif@gmail.com'">
-                    <strong>Email</strong>
-                    <p>mohamedaarif@gmail.com</p>
-                    <div class="contact-icon">📧</div>
-                </div>
-                <div class="contact-item clickable" onclick="window.open('https://www.linkedin.com/in/mohammad-aarif-321369306/', '_blank')">
-                    <strong>LinkedIn</strong>
-                    <p>View Profile</p>
-                    <div class="contact-icon">💼</div>
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-label">Location</span>
+                        <span class="contact-value">Karaikudi, Tamil Nadu 630001</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <a href="mailto:mohamedaarif@gmail.com" class="contact-value">mohamedaarif@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-label">LinkedIn</span>
+                        <a href="https://www.linkedin.com/in/mohammad-aarif-321369306/" target="_blank" class="contact-value">View Profile</a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.portfolio-card, .achievement-item').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
