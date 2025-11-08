@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Aarif - Flutter Developer</title>
+    <title>Mohamed Aarif A - Flutter Developer</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav>
-            <div class="nav-brand">Mohamed Aarif</div>
+            <div class="nav-brand">Mohamed Aarif A</div>
             <ul class="nav-links">
                 <li><a href="#hero" class="active">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -21,6 +21,9 @@
     </header>
     
     <section id="hero">
+         <div class="hero-profile-overlay">
+            <img src="asserts/images/profile without backround.png" alt="Mohamed Aarif A" class="hero-profile-bg">
+        </div>
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1 class="hero-name">Mohamed Aarif</h1>
@@ -38,12 +41,16 @@
     
     <section id="portfolio">
         <div class="container">
-            <h2 class="section-title">Portfolio</h2>
+            <h2 class="section-title">Projects</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-card">
+                <div class="portfolio-card featured">
+                    <div class="card-header">
+                        <div class="project-icon">📱</div>
+                        <span class="project-status">Active</span>
+                    </div>
                     <div class="card-content">
                         <h3>Flutter Development</h3>
-                        <p>Building responsive and user-friendly mobile applications with modern UI/UX design</p>
+                        <p>Crafting responsive and intuitive mobile applications with cutting-edge UI/UX design principles and cross-platform compatibility.</p>
                         <div class="tech-stack">
                             <span>Flutter</span>
                             <span>Dart</span>
@@ -52,9 +59,13 @@
                     </div>
                 </div>
                 <div class="portfolio-card">
+                    <div class="card-header">
+                        <div class="project-icon">⚡</div>
+                        <span class="project-status">Completed</span>
+                    </div>
                     <div class="card-content">
-                        <h3>IoT Development</h3>
-                        <p>Electronic Nadi Pariksha Wearable Device - IoT-based health monitoring system</p>
+                        <h3>IoT Health Monitoring</h3>
+                        <p>Electronic Nadi Bio Band Wearable Device - Advanced IoT-based health monitoring system with real-time data analytics.</p>
                         <div class="tech-stack">
                             <span>IoT</span>
                             <span>C++</span>
@@ -63,12 +74,16 @@
                     </div>
                 </div>
                 <div class="portfolio-card">
+                    <div class="card-header">
+                        <div class="project-icon">🧠</div>
+                        <span class="project-status">Ongoing</span>
+                    </div>
                     <div class="card-content">
-                        <h3>Problem Solving</h3>
-                        <p>Strong algorithmic thinking and computational problem-solving skills</p>
+                        <h3>Algorithmic Solutions</h3>
+                        <p>Advanced problem-solving expertise with focus on computational efficiency and scalable database architectures.</p>
                         <div class="tech-stack">
-                            <span>C++</span>
-                            <span>Python</span>
+                            <span>C/C++</span>
+                            <span>Python/Rust</span>
                             <span>MySQL</span>
                         </div>
                     </div>
@@ -80,21 +95,48 @@
     <section id="achievements">
         <div class="container">
             <h2 class="section-title">Achievements</h2>
+            <div class="achievements-intro">
+                <p class="achievements-summary">
+                    A journey of continuous growth, skill development, and milestone achievements. From academic excellence to technical innovation, each accomplishment represents dedication to learning and pushing boundaries in technology and problem-solving.
+                </p>
+            </div>
+            
+            <div class="achievements-navigation">
+                <div class="nav-buttons">
+                    <a href="achievements.html" class="achievement-nav-btn primary">
+                        <span class="nav-icon">🏆</span>
+                        <span>View All Achievements</span>
+                    </a>
+                    <a href="achievements.html#iit-achievements" class="achievement-nav-btn">
+                        <span class="nav-icon">🎓</span>
+                        <span>Academic</span>
+                    </a>
+                    <a href="achievements.html#technical-skills" class="achievement-nav-btn">
+                        <span class="nav-icon">💻</span>
+                        <span>Technical</span>
+                    </a>
+                    <a href="achievements.html#projects-innovation" class="achievement-nav-btn">
+                        <span class="nav-icon">🚀</span>
+                        <span>Leadership</span>
+                    </a>
+                </div>
+            </div>
+            
             <div class="achievements-grid">
                 <div class="achievement-item">
                     <div class="achievement-number">01</div>
                     <h3>IIT Madras Entrance</h3>
-                    <p>Successfully cracked the IITM online program entrance examination</p>
+                    <p>Successfully cracked the IITM online program entrance examination, demonstrating strong analytical and problem-solving capabilities</p>
                 </div>
                 <div class="achievement-item">
                     <div class="achievement-number">02</div>
-                    <h3>Grade A Achievement</h3>
-                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program</p>
+                    <h3>Grade A Excellence</h3>
+                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program, showcasing academic excellence</p>
                 </div>
                 <div class="achievement-item">
                     <div class="achievement-number">03</div>
-                    <h3>Technical Excellence</h3>
-                    <p>Strong problem-solving skills with comprehensive MySQL database knowledge</p>
+                    <h3>Technical Mastery</h3>
+                    <p>Advanced problem-solving expertise with comprehensive knowledge in database management and algorithmic solutions</p>
                 </div>
             </div>
         </div>
