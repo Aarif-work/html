@@ -79,7 +79,7 @@
                         <img src="asserts/mentors/MeenashiAnna.png" alt="Meenakshi Sundaram Manivannan">
                     </div>
                     <div class="mentor-info">
-                        <h3>Meenakshi Sundaram Manivannan</h3>
+                        <h3>Meenakshi Sundaram</h3>
                         <p class="mentor-title">Applied Data Scientist; Semiconductor Process Engineering; Computational Modeler</p>
                     </div>
                     <div class="mentor-overlay">
@@ -205,26 +205,30 @@
 
         // Touch/Swipe support
         let startX = 0;
-        let endX = 0;
+        let startY = 0;
         
         const mentorsGrid = document.querySelector('.mentors-grid');
         if (mentorsGrid) {
             mentorsGrid.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
-            });
+                startY = e.touches[0].clientY;
+            }, { passive: true });
             
             mentorsGrid.addEventListener('touchend', (e) => {
-                endX = e.changedTouches[0].clientX;
-                const diff = startX - endX;
+                const endX = e.changedTouches[0].clientX;
+                const endY = e.changedTouches[0].clientY;
+                const diffX = startX - endX;
+                const diffY = startY - endY;
                 
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
+                // Only trigger if horizontal swipe is more significant than vertical
+                if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
+                    if (diffX > 0) {
                         nextSlide();
                     } else {
                         prevSlide();
                     }
                 }
-            });
+            }, { passive: true });
         }
         
         // Auto-play cycling

@@ -13,6 +13,11 @@
     <header>
         <nav>
             <div class="nav-brand">Mohamed Aarif A</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#portfolio">Portfolio</a></li>
@@ -310,6 +315,24 @@
 
             document.querySelectorAll('img[loading="lazy"]').forEach(img => {
                 imageObserver.observe(img);
+            });
+        }
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+            
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
             });
         }
 

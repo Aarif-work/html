@@ -11,6 +11,11 @@
     <header>
         <nav>
             <div class="nav-brand">Mohamed Aarif A</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
             <ul class="nav-links">
                 <li><a href="#hero" class="active">Home</a></li>
                 <li><a href="#portfolio">Portfolio</a></li>
@@ -144,9 +149,13 @@
     </section>
     
     <section id="contact">
+        <div class="contact-background"></div>
         <div class="container">
             <h2 class="section-title">Work With Me</h2>
             <div class="contact-content">
+                <div class="contact-profile">
+                    <img src="asserts/images/profile.png" alt="Mohamed Aarif A" class="contact-profile-img">
+                </div>
                 <div class="contact-info">
                     <div class="contact-item">
                         <span class="contact-label">Location</span>
@@ -166,6 +175,24 @@
     </section>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenuToggle && navLinks) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+            
+            navLinks.addEventListener('click', (e) => {
+                if (e.target.tagName === 'A') {
+                    navLinks.classList.remove('active');
+                    mobileMenuToggle.classList.remove('active');
+                }
+            });
+        }
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
