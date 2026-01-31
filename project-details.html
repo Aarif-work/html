@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Details | Mohamed Aarif</title>
+    <link rel="icon" href="asserts/favicon/web/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="asserts/favicon/web/apple-touch-icon.png">
+    <link rel="manifest" href="asserts/favicon/site.webmanifest">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="project-details.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Premium Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+        <div class="loader-text">Project Deep Dive</div>
+    </div>
+
+    <header>
+        <nav>
+            <div class="nav-brand">Mohamed Aarif</div>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#portfolio">Projects</a></li>
+                <li><a href="achievements.html">Achievements</a></li>
+                <li><a href="mentors.html">Mentors</a></li>
+                <li><a href="index.html#contact">Reach Out</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="project-details-container">
+        <div class="loading-state">
+            <div class="loader"></div>
+            <p>Loading project masterpiece...</p>
+        </div>
+    </main>
+
+    <script>
+        // Page Loader Hider
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            if (loader) loader.classList.add('hidden');
+        });
+
+        // --- LIVE APPS SCRIPT URL ---
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZRbieXMXOSwH_IokJ15ZxoATihW3puBj_zmaUQF4nyVYxOay93Sy__C25ao8HrSfR/exec';
+
+        async function fetchProjectDetails() {
+            const params = new URLSearchParams(window.location.search);
+            const projectId = params.get('id');
+            const container = document.getElementById('project-details-container');
+
+            if (!projectId) {
+                container.innerHTML = '<div class="error-msg">Project not found. Redirecting to home...</div>';
+                setTimeout(() => window.location.href = 'index.html', 3000);
+                return;
+            }
+
+            // Fallback: Check local storage first (fast load) BUT still try to fetch
+            const cachedData = localStorage.getItem('portfolio_projects');
+            if (cachedData) {
+                const projects = JSON.parse(cachedData);
+                const project = projects.find(p => p.id == projectId);
+                if (project) renderProject(project);
+            }
+
+            try {
+                const response = await fetch(SCRIPT_URL);
+                const projects = await response.json();
+
+                const project = projects.find(p => p.id == projectId);
+                if (project) {
+                    renderProject(project); // Update with fresh data
+                } else {
+                    if (!cachedData) throw new Error("Project not found in sheet");
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                if (!container.innerHTML.includes('details-hero')) {
+                    container.innerHTML = `<div class="error-msg">Error loading project. Please check connection.</div>`;
+                }
+            }
+        }
+
+        function renderProject(project) {
+            const container = document.getElementById('project-details-container');
+
+            // Clean up list data (handle spaces and empty entries)
+            const techStack = project.techstack
+                ? project.techstack.toString().split(',').map(t => t.trim()).filter(t => t !== "")
+                : [];
+
+            const galleryImages = project.moreimages
+                ? project.moreimages.toString().split(',').map(img => img.trim()).filter(img => img !== "")
+                : [];
+
+            // Ensure project link is valid
+            const projectLink = (project.projectlink && project.projectlink.toString().startsWith('http'))
+                ? project.projectlink
+                : '#';
+
+            container.innerHTML = `
+                <div class="details-hero" style="background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('${project.mainimageurl || 'asserts/images/new backround image.jpg'}') center/cover;">
+                    <div class="container">
+                        <span class="category-badge">${project.category || 'Portfolio'}</span>
+                        <h1 class="project-title">${project.projecttitle}</h1>
+                        <div class="tech-tags">
+                            ${techStack.map(tech => `<span>${tech}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+
+                <section class="details-content">
+                    <div class="container project-main-grid">
+                        <div class="description-side">
+                            <h2>The Challenge & Solution</h2>
+                            <p>${project.description}</p>
+                            ${projectLink !== '#' ? `
+                                <a href="${projectLink}" target="_blank" class="hero-cta">View Live Project</a>
+                            ` : ''}
+                        </div>
+                        <div class="image-main">
+                            <img src="${project.mainimageurl}" alt="${project.projecttitle}" class="featured-img">
+                        </div>
+                    </div>
+                </section>
+
+                ${galleryImages.length > 0 ? `
+                <section class="project-gallery">
+                    <div class="container">
+                        <h2 class="section-title">Visual Showcase</h2>
+                        <div class="gallery-grid">
+                            ${galleryImages.map(img => `<img src="${img}" alt="Gallery image" class="gallery-item">`).join('')}
+                        </div>
+                    </div>
+                </section>
+                ` : ''}
+
+                <section class="project-nav">
+                    <div class="container">
+                        <a href="index.html#portfolio" class="back-link">← Back to All Projects</a>
+                    </div>
+                </section>
+            `;
+        }
+
+        // Initialize
+        fetchProjectDetails();
+
+        // Mobile menu toggle
+        const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        if (mobileMenuToggle) {
+            mobileMenuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuToggle.classList.toggle('active');
+            });
+        }
+    </script>
+</body>
+
+</html>

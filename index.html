@@ -1,28 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="description" content="Official portfolio of Mohamed Aarif (Aarif Work). Explore my projects, skills, achievements, and developer profile.">
-    <meta name="keywords" content="Mohamed Aarif Portfolio, Aarif Work, Aarif Portfolio, Mohamed Aarif Developer">
-    
-    <title>A Mohamed Aarif - Full stack Developer</title>
 
-    <link rel="icon" href="asserts/favicon/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" sizes="180x180" href="asserts/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="asserts/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="asserts/favicon/favicon-16x16.png">
+    <meta name="description"
+        content="Official portfolio of Mohamed Aarif (Aarif Work). Explore my projects, skills, achievements, and developer profile.">
+    <meta name="keywords" content="Mohamed Aarif Portfolio, Aarif Work, Aarif Portfolio, Mohamed Aarif Developer">
+
+    <title>Mohamed Aarif - Software Developer</title>
+
+    <link rel="icon" href="asserts/favicon/web/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="asserts/favicon/web/apple-touch-icon.png">
     <link rel="manifest" href="asserts/favicon/site.webmanifest">
-    
+
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <script src="asserts/chatbot.js"></script>
 </head>
+
 <body>
+    <!-- Premium Page Loader -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader"></div>
+        <div class="loader-text">Aarif Work</div>
+    </div>
+
     <header>
         <nav>
-            <div class="nav-brand">Mohamed Aarif A</div>
+            <div class="nav-brand">Mohamed Aarif</div>
             <button class="mobile-menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -30,45 +39,79 @@
             </button>
             <ul class="nav-links">
                 <li><a href="#hero" class="active">Home</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#portfolio">Projects</a></li>
                 <li><a href="achievements.html">Achievements</a></li>
                 <li><a href="mentors.html">Mentors</a></li>
                 <li><a href="#contact">Reach Out</a></li>
             </ul>
         </nav>
     </header>
-    
-    <section id="hero">
-         <div class="hero-profile-overlay">
-            <img src="asserts/images/profile without backround.png" alt="Mohamed Aarif A" class="hero-profile-bg">
+
+    <section id="hero" style="min-height: 75vh; height: 75vh;">
+        <div class="hero-profile-overlay">
+            <img src="asserts/images/profile without backround.png" alt="Mohamed Aarif" class="hero-profile-bg">
         </div>
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1 class="hero-name">Mohamed Aarif</h1>
-                <h2 class="hero-title">Flutter Developer & Programmer</h2>
-                <p class="hero-tagline">Crafting elegant mobile experiences with modern technology</p>
+                <h2 class="hero-title">Software Developer</h2>
+                <p class="hero-tagline">Full-stack Developer specializing in pixel-perfect Front-end, robust Back-end,
+                    and premium UI/UX Design for Mobile & Web.</p>
                 <a href="#portfolio" class="hero-cta">
                     <span>Portfolio</span>
                     <svg class="arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                        <path d="M12 5v14M19 12l-7 7-7-7"/>
+                        <path d="M12 5v14M19 12l-7 7-7-7" />
                     </svg>
                 </a>
             </div>
         </div>
     </section>
-    
+
     <section id="portfolio">
         <div class="container">
             <h2 class="section-title">Projects</h2>
             <div class="portfolio-grid">
                 <div class="portfolio-card featured">
                     <div class="card-header">
+                        <div class="project-icon">🎨</div>
+                        <span class="project-status">Featured</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>UI/UX & Figma Design</h3>
+                        <p>Architecting stunning mobile app and website prototypes in Figma. Focused on user-centric
+                            design, micro-interactions, and high-fidelity wireframes.</p>
+                        <div class="tech-stack">
+                            <span>Figma</span>
+                            <span>Prototyping</span>
+                            <span>User Research</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-header">
+                        <div class="project-icon">💻</div>
+                        <span class="project-status">Expert</span>
+                    </div>
+                    <div class="card-content">
+                        <h3>Full-stack Development</h3>
+                        <p>Bridging the gap between robust backend systems and intuitive frontend interfaces using
+                            modern frameworks and performance-first architectures.</p>
+                        <div class="tech-stack">
+                            <span>Frontend</span>
+                            <span>Backend</span>
+                            <span>API Design</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-card">
+                    <div class="card-header">
                         <div class="project-icon">📱</div>
                         <span class="project-status">Active</span>
                     </div>
                     <div class="card-content">
                         <h3>Flutter Development</h3>
-                        <p>Crafting responsive and intuitive mobile applications with cutting-edge UI/UX design principles and cross-platform compatibility.</p>
+                        <p>Crafting high-performance, cross-platform mobile experiences with Flutter. Integrating
+                            complex APIs and ensuring smooth animations.</p>
                         <div class="tech-stack">
                             <span>Flutter</span>
                             <span>Dart</span>
@@ -76,49 +119,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="project-icon">⚡</div>
-                        <span class="project-status">Completed</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>IoT Health Monitoring</h3>
-                        <p>Electronic Nadi Bio Band Wearable Device - Advanced IoT-based health monitoring system with real-time data analytics.</p>
-                        <div class="tech-stack">
-                            <span>IoT</span>
-                            <span>C++</span>
-                            <span>Sensors</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="project-icon">🧠</div>
-                        <span class="project-status">Ongoing</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>Algorithmic Solutions</h3>
-                        <p>Advanced problem-solving expertise with focus on computational efficiency and scalable database architectures.</p>
-                        <div class="tech-stack">
-                            <span>C/C++</span>
-                            <span>Python/Rust</span>
-                            <span>MySQL</span>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
-    
+
     <section id="achievements">
         <div class="container">
             <h2 class="section-title">Achievements</h2>
             <div class="achievements-intro">
                 <p class="achievements-summary">
-                    A journey of continuous growth, skill development, and milestone achievements. From academic excellence to technical innovation, each accomplishment represents dedication to learning and pushing boundaries in technology and problem-solving.
+                    A journey of continuous growth, skill development, and milestone achievements. From academic
+                    excellence to technical innovation, each accomplishment represents dedication to learning and
+                    pushing boundaries in technology and problem-solving.
                 </p>
             </div>
-            
+
             <div class="achievements-navigation">
                 <div class="nav-buttons">
                     <a href="achievements.html" class="achievement-nav-btn primary">
@@ -139,34 +154,37 @@
                     </a>
                 </div>
             </div>
-            
+
             <div class="achievements-grid">
                 <div class="achievement-item">
                     <div class="achievement-number">01</div>
                     <h3>IIT Madras Entrance</h3>
-                    <p>Successfully cracked the IITM online program entrance examination, demonstrating strong analytical and problem-solving capabilities</p>
+                    <p>Successfully cracked the IITM online program entrance examination, demonstrating strong
+                        analytical and problem-solving capabilities</p>
                 </div>
                 <div class="achievement-item">
                     <div class="achievement-number">02</div>
                     <h3>Grade A Excellence</h3>
-                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program, showcasing academic excellence</p>
+                    <p>Secured Grade A in Computational Thinking course under IIT Madras Data Science program,
+                        showcasing academic excellence</p>
                 </div>
                 <div class="achievement-item">
                     <div class="achievement-number">03</div>
                     <h3>Technical Mastery</h3>
-                    <p>Advanced problem-solving expertise with comprehensive knowledge in database management and algorithmic solutions</p>
+                    <p>Advanced problem-solving expertise with comprehensive knowledge in database management and
+                        algorithmic solutions</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <section id="contact">
         <div class="contact-background"></div>
         <div class="container">
             <h2 class="section-title">Work With Me</h2>
             <div class="contact-content">
                 <div class="contact-profile">
-                    <img src="asserts/images/profile.png" alt="Mohamed Aarif A" class="contact-profile-img">
+                    <img src="asserts/images/profile.png" alt="Mohamed Aarif" class="contact-profile-img">
                 </div>
                 <div class="contact-info">
                     <div class="contact-item">
@@ -179,7 +197,8 @@
                     </div>
                     <div class="contact-item">
                         <span class="contact-label">LinkedIn</span>
-                        <a href="https://www.linkedin.com/in/mohammad-aarif-321369306/" target="_blank" class="contact-value">View Profile</a>
+                        <a href="https://www.linkedin.com/in/mohammad-aarif-321369306/" target="_blank"
+                            class="contact-value">View Profile</a>
                     </div>
                 </div>
             </div>
@@ -187,21 +206,28 @@
     </section>
 
     <section id="animation-footer">
-        <div class="visme_d" data-title="Business Contact Form" data-url="q74mrrqw-business-contact-form" data-domain="forms" data-min-height="400px" data-form-id="157754"></div>
+        <div class="visme_d" data-title="Business Contact Form" data-url="q74mrrqw-business-contact-form"
+            data-domain="forms" data-min-height="400px" data-form-id="157754"></div>
         <script src="https://static-bundles.visme.co/forms/vismeforms-embed.js"></script>
     </section>
 
     <script>
+        // Page Loader Hider
+        window.addEventListener('load', () => {
+            const loader = document.getElementById('pageLoader');
+            loader.classList.add('hidden');
+        });
+
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
         const navLinks = document.querySelector('.nav-links');
-        
+
         if (mobileMenuToggle && navLinks) {
             mobileMenuToggle.addEventListener('click', () => {
                 navLinks.classList.toggle('active');
                 mobileMenuToggle.classList.toggle('active');
             });
-            
+
             navLinks.addEventListener('click', (e) => {
                 if (e.target.tagName === 'A') {
                     navLinks.classList.remove('active');
@@ -238,4 +264,5 @@
         });
     </script>
 </body>
+
 </html>

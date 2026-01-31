@@ -20,6 +20,44 @@
     --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.loader {
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+
+.loader::before,
+.loader::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: var(--accent-gold);
+}
+
+.loader::before {
+    z-index: 100;
+    animation: spin 1s cubic-bezier(0.55, 0.15, 0.45, 0.85) infinite;
+}
+
+.loader::after {
+    border: 3px solid rgba(212, 175, 55, 0.1);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -58,6 +96,25 @@ nav {
     font-weight: 700;
     color: var(--text-primary);
     letter-spacing: -0.5px;
+}
+
+.mobile-menu-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle span {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: var(--transition);
 }
 
 .nav-links {
@@ -101,8 +158,8 @@ nav {
 /* Hero Section */
 #hero {
     height: 90vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), 
-                url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -521,8 +578,8 @@ section {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(26, 26, 26, 0.9)), 
-                url('asserts/images/premium_photo.avif') center/cover no-repeat;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.85), rgba(26, 26, 26, 0.9)),
+        url('asserts/images/premium_photo.avif') center/cover no-repeat;
     z-index: 1;
 }
 
@@ -551,16 +608,16 @@ section {
     border-radius: 50%;
     object-fit: cover;
     border: 5px solid var(--accent-gold);
-    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5), 
-                inset 0 0 20px rgba(212, 175, 55, 0.1);
+    box-shadow: 0 0 40px rgba(212, 175, 55, 0.5),
+        inset 0 0 20px rgba(212, 175, 55, 0.1);
     transition: var(--transition);
     position: relative;
 }
 
 .contact-profile-img:hover {
     transform: scale(1.08) rotate(2deg);
-    box-shadow: 0 0 60px rgba(212, 175, 55, 0.8), 
-                inset 0 0 30px rgba(212, 175, 55, 0.2);
+    box-shadow: 0 0 60px rgba(212, 175, 55, 0.8),
+        inset 0 0 30px rgba(212, 175, 55, 0.2);
     border-color: #f4d03f;
 }
 
@@ -627,6 +684,7 @@ section {
         opacity: 0;
         transform: translateY(50px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -634,12 +692,19 @@ section {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-10px);
     }
+
     60% {
         transform: translateY(-5px);
     }
@@ -648,13 +713,44 @@ section {
 /* Responsive Design */
 @media (max-width: 768px) {
     nav {
-        padding: 1rem;
-        flex-direction: column;
-        gap: 1rem;
+        padding: 1rem 2rem;
+        flex-direction: row;
+        justify-content: space-between;
+        position: relative;
+    }
+
+    .mobile-menu-toggle {
+        display: flex;
     }
 
     .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.98);
+        flex-direction: column;
         gap: 1.5rem;
+        padding: 2rem;
+        border-bottom: 1px solid var(--border-subtle);
+        backdrop-filter: blur(20px);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .mobile-menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .mobile-menu-toggle.active span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 
     .hero-name {
@@ -679,23 +775,23 @@ section {
     .portfolio-card .card-content {
         padding: 1.5rem;
     }
-    
+
     .portfolio-card .card-header {
         padding: 1rem 1.5rem 0;
     }
-    
+
     .nav-buttons {
         flex-direction: column;
         align-items: center;
         gap: 0.8rem;
     }
-    
+
     .achievement-nav-btn {
         width: 100%;
         max-width: 280px;
         justify-content: center;
     }
-    
+
     .achievement-item {
         padding: 1.5rem;
     }
@@ -713,17 +809,17 @@ section {
         gap: 2rem;
         text-align: center;
     }
-    
+
     .contact-content {
         padding: 1.5rem;
         gap: 2.5rem;
     }
-    
+
     .contact-profile-img {
         width: 160px;
         height: 160px;
     }
-    
+
     .contact-item {
         flex-direction: column;
         gap: 0.5rem;
@@ -737,6 +833,7 @@ section {
         opacity: 0;
         transform: translateX(-50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -748,6 +845,7 @@ section {
         opacity: 0;
         transform: translateX(50px);
     }
+
     to {
         opacity: 1;
         transform: translateX(0);
@@ -759,6 +857,7 @@ section {
         opacity: 0;
         transform: scale(0.8);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -780,8 +879,8 @@ section {
 /* Achievements Page Styles */
 #achievements-hero {
     height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
-                url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+        url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -791,8 +890,8 @@ section {
 /* Mentors Page Styles */
 #mentors-hero {
     height: 60vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)), 
-                url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
+        url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1014,7 +1113,9 @@ section {
     color: var(--text-secondary);
     line-height: 1.7;
     font-size: 0.95rem;
-}itle {
+}
+
+itle {
     color: var(--accent-gold);
     font-weight: 600;
     font-size: 0.9rem;
@@ -1108,8 +1209,15 @@ section {
 }
 
 @keyframes arrowPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
 }
 
 .nav-arrow:focus {
@@ -1144,16 +1252,16 @@ section {
     .mentor-card.left-1 {
         transform: translateX(-280px) scale(0.8);
     }
-    
+
     .mentor-card.right-1 {
         transform: translateX(280px) scale(0.8);
     }
-    
+
     .mentor-card.left-2 {
         transform: translateX(-500px) scale(0.6);
         opacity: 0.2;
     }
-    
+
     .mentor-card.right-2 {
         transform: translateX(500px) scale(0.6);
         opacity: 0.2;
@@ -1164,89 +1272,90 @@ section {
     nav {
         padding: 1rem;
     }
-    
+
     .nav-links {
         gap: 1rem;
         flex-wrap: wrap;
         justify-content: center;
     }
-    
+
     #hero {
         height: 80vh;
         margin-top: 70px;
     }
-    
+
     .hero-profile-overlay {
         width: 100%;
         opacity: 0.3;
         right: 0;
     }
-    
+
     .hero-profile-bg {
         object-position: center top;
     }
-    
+
     #mentors-hero {
         height: 50vh;
         margin-top: 70px;
     }
-    
+
     .mentors-grid {
         height: 380px;
         padding: 0 1rem;
     }
-    
+
     .mentor-card {
         width: 240px;
         height: 340px;
     }
-    
+
     .mentor-card.active {
         transform: translateX(0) scale(1.05);
     }
-    
+
     .mentor-card.left-1 {
         transform: translateX(-180px) scale(0.75);
         opacity: 0.6;
     }
-    
+
     .mentor-card.right-1 {
         transform: translateX(180px) scale(0.75);
         opacity: 0.6;
     }
-    
-    .mentor-card.left-2, .mentor-card.right-2 {
+
+    .mentor-card.left-2,
+    .mentor-card.right-2 {
         display: none;
     }
-    
+
     .mentor-image {
         height: 200px;
     }
-    
+
     .mentor-info {
         padding: 1.2rem;
     }
-    
+
     .mentor-info h3 {
         font-size: 1.2rem;
         margin-bottom: 0.3rem;
     }
-    
+
     .mentor-title {
         font-size: 0.75rem;
         line-height: 1.3;
     }
-    
+
     .nav-arrow {
         width: 45px;
         height: 45px;
         font-size: 1.1rem;
     }
-    
+
     .prev-arrow {
         left: -60px;
     }
-    
+
     .next-arrow {
         right: -60px;
     }
@@ -1256,109 +1365,109 @@ section {
     .container {
         padding: 0 0.5rem;
     }
-    
+
     #hero {
         height: 70vh;
     }
-    
+
     .hero-profile-overlay {
         width: 100%;
         opacity: 0.2;
     }
-    
+
     .hero-content {
         padding: 0 1rem;
         z-index: 3;
     }
-    
+
     #mentors-hero {
         height: 45vh;
     }
-    
+
     .hero-content {
         padding: 0 1rem;
     }
-    
+
     .contact-content {
         padding: 1rem;
         gap: 2rem;
     }
-    
+
     .contact-profile-img {
         width: 130px;
         height: 130px;
     }
-    
+
     .mentors-grid {
         height: 320px;
         padding: 0 0.5rem;
     }
-    
+
     .mentor-card {
         width: 200px;
         height: 300px;
     }
-    
+
     .mentor-card.active {
         transform: translateX(0) scale(1);
     }
-    
+
     .mentor-card.left-1 {
         transform: translateX(-130px) scale(0.65);
         opacity: 0.4;
     }
-    
+
     .mentor-card.right-1 {
         transform: translateX(130px) scale(0.65);
         opacity: 0.4;
     }
-    
+
     .mentor-image {
         height: 160px;
     }
-    
+
     .mentor-info {
         padding: 1rem;
     }
-    
+
     .mentor-info h3 {
         font-size: 1.1rem;
         margin-bottom: 0.2rem;
     }
-    
+
     .mentor-title {
         font-size: 0.7rem;
         line-height: 1.2;
     }
-    
+
     .nav-arrow {
         width: 35px;
         height: 35px;
         font-size: 0.9rem;
     }
-    
+
     .prev-arrow {
         left: -45px;
     }
-    
+
     .next-arrow {
         right: -45px;
     }
-    
+
     .indicator {
         width: 8px;
         height: 8px;
     }
-    
+
     .mentors-indicators {
         margin-top: 1.5rem;
         gap: 0.3rem;
     }
-    
+
     .mentor-overlay {
         padding: 0.8rem;
     }
-    
+
     .mentor-overlay .mentor-note {
         font-size: 0.75rem;
         line-height: 1.3;
@@ -1402,9 +1511,17 @@ section {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.stat-item:nth-child(1) { animation-delay: 0.2s; }
-.stat-item:nth-child(2) { animation-delay: 0.4s; }
-.stat-item:nth-child(3) { animation-delay: 0.6s; }
+.stat-item:nth-child(1) {
+    animation-delay: 0.2s;
+}
+
+.stat-item:nth-child(2) {
+    animation-delay: 0.4s;
+}
+
+.stat-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
 
 .stat-number {
     display: block;
@@ -2056,7 +2173,7 @@ section {
     .achievements-hero-description {
         font-size: 1rem;
     }
-    
+
     .achievements-summary {
         font-size: 1rem;
         margin-bottom: 1.5rem;
@@ -2219,22 +2336,22 @@ section {
     #animation-footer {
         min-height: 50vh;
     }
-    
+
     .footer-overlay {
         padding: 1.5rem;
         max-width: 90%;
     }
-    
+
     .footer-title {
         font-size: 2rem;
         margin-bottom: 1rem;
     }
-    
+
     .footer-description {
         font-size: 1rem;
         margin-bottom: 1.5rem;
     }
-    
+
     .footer-cta {
         padding: 0.8rem 1.5rem;
         font-size: 0.9rem;
@@ -2245,25 +2362,27 @@ section {
     #animation-footer {
         min-height: 45vh;
     }
-    
+
     .footer-overlay {
         padding: 1rem;
     }
-    
+
     .footer-title {
         font-size: 1.8rem;
     }
-    
+
     .footer-description {
         font-size: 0.95rem;
         line-height: 1.6;
     }
 }
+
 /* Newsletter Footer */
 #animation-footer {
     width: 100vw;
     min-height: 60vh;
 }
+
 /* Newsletter Footer Override */
 #animation-footer {
     width: 100vw !important;

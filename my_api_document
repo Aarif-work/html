@@ -67,10 +67,10 @@ Content-Type: application/json
 ```json
 {
   "data": {
-    "name": "Mohamed Aarif A",
-    "role": "Flutter Developer & Programmer",
-    "skills": ["Flutter", "Dart", "Python", "C++", "IoT", "Firebase"],
-    "projects": ["Nadi Bio Band", "Flutter Development"],
+    "name": "Mohamed Aarif",
+    "role": "Software Developer",
+    "skills": ["Figma", "Frontend", "Backend", "Full-stack", "Flutter", "UI/UX Design"],
+    "projects": ["UI/UX & Figma Design", "Full-stack Development", "Flutter Development"],
     "achievements": [],
     "fetched_at": 1703123456
   },
@@ -325,4 +325,4 @@ The AI returns responses that may include:
 For issues or questions:
 - Check interactive docs at `/docs`
 - View API status at `/`
-- Contact: Mohamed Aarif A
+- Contact: Mohamed Aarif

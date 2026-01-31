@@ -1,17 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mentors - Mohamed Aarif A</title>
+    <title>Mentors - Mohamed Aarif</title>
+    <link rel="icon" href="asserts/favicon/web/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="asserts/favicon/web/apple-touch-icon.png">
+    <link rel="manifest" href="asserts/favicon/site.webmanifest">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
     <script src="asserts/chatbot.js"></script>
 </head>
+
 <body>
     <header>
         <nav>
-            <div class="nav-brand">Mohamed Aarif A</div>
+            <div class="nav-brand">Mohamed Aarif</div>
             <button class="mobile-menu-toggle" aria-label="Toggle menu">
                 <span></span>
                 <span></span>
@@ -19,14 +26,14 @@
             </button>
             <ul class="nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#portfolio">Portfolio</a></li>
+                <li><a href="index.html#portfolio">Projects</a></li>
                 <li><a href="achievements.html">Achievements</a></li>
                 <li><a href="mentors.html" class="active">Mentors</a></li>
                 <li><a href="index.html#contact">Reach Out</a></li>
             </ul>
         </nav>
     </header>
-    
+
     <section id="mentors-hero">
         <div class="hero-overlay">
             <div class="hero-content">
@@ -36,7 +43,7 @@
             </div>
         </div>
     </section>
-    
+
     <section id="mentors">
         <div class="container">
             <h2 class="section-title">Mentors</h2>
@@ -47,13 +54,16 @@
                     </div>
                     <div class="mentor-info">
                         <h3>Palani Vairavan</h3>
-                        <p class="mentor-title">Engineering Leadership @ Amazon Homepage | EX-AWS | EX-Azure | Teacher @ Hope3 Varsity</p>
+                        <p class="mentor-title">Engineering Leadership @ Amazon Homepage | EX-AWS | EX-Azure | Teacher @
+                            Hope3 Varsity</p>
                     </div>
                     <div class="mentor-overlay">
-                        <p class="mentor-note">Exceptional leader with deep expertise in cloud technologies and engineering excellence. His guidance in system design and leadership principles has been invaluable.</p>
+                        <p class="mentor-note">Exceptional leader with deep expertise in cloud technologies and
+                            engineering excellence. His guidance in system design and leadership principles has been
+                            invaluable.</p>
                     </div>
                 </div>
-                
+
                 <div class="mentor-card">
                     <div class="mentor-image">
                         <img src="asserts/mentors/SivaAnna.png" alt="Siva Kumar">
@@ -63,10 +73,11 @@
                         <p class="mentor-title">Mentor @ Hope3 Foundation and Treasty</p>
                     </div>
                     <div class="mentor-overlay">
-                        <p class="mentor-note">Passionate mentor dedicated to nurturing talent and fostering innovation. His insights into entrepreneurship and technology have shaped my professional outlook.</p>
+                        <p class="mentor-note">Passionate mentor dedicated to nurturing talent and fostering innovation.
+                            His insights into entrepreneurship and technology have shaped my professional outlook.</p>
                     </div>
                 </div>
-                
+
                 <div class="mentor-card">
                     <div class="mentor-image">
                         <img src="asserts/mentors/gokulanna.jpeg" alt="Gokul Kittusamy">
@@ -76,23 +87,28 @@
                         <p class="mentor-title">CEO @ ELARCHITEK | MIT</p>
                     </div>
                     <div class="mentor-overlay">
-                        <p class="mentor-note">Visionary leader with MIT background bringing cutting-edge architectural solutions. His strategic thinking and innovation mindset continue to inspire my approach to problem-solving.</p>
+                        <p class="mentor-note">Visionary leader with MIT background bringing cutting-edge architectural
+                            solutions. His strategic thinking and innovation mindset continue to inspire my approach to
+                            problem-solving.</p>
                     </div>
                 </div>
-                
+
                 <div class="mentor-card">
                     <div class="mentor-image">
                         <img src="asserts/mentors/MeenashiAnna.png" alt="Meenakshi Sundaram Manivannan">
                     </div>
                     <div class="mentor-info">
                         <h3>Meenakshi Sundaram</h3>
-                        <p class="mentor-title">Applied Data Scientist; Semiconductor Process Engineering; Computational Modeler</p>
+                        <p class="mentor-title">Applied Data Scientist; Semiconductor Process Engineering; Computational
+                            Modeler</p>
                     </div>
                     <div class="mentor-overlay">
-                        <p class="mentor-note">Expert in data science and computational modeling with deep technical knowledge. His analytical approach and research methodology have enhanced my problem-solving capabilities.</p>
+                        <p class="mentor-note">Expert in data science and computational modeling with deep technical
+                            knowledge. His analytical approach and research methodology have enhanced my problem-solving
+                            capabilities.</p>
                     </div>
                 </div>
-                
+
                 <div class="mentor-card">
                     <div class="mentor-image">
                         <img src="asserts/mentors/ManiAnna.png" alt="MANI RR">
@@ -102,13 +118,15 @@
                         <p class="mentor-title">Senior Software Engineer</p>
                     </div>
                     <div class="mentor-overlay">
-                        <p class="mentor-note">Experienced software engineer with strong technical foundation and practical insights. His mentorship in software development best practices has been instrumental in my growth.</p>
+                        <p class="mentor-note">Experienced software engineer with strong technical foundation and
+                            practical insights. His mentorship in software development best practices has been
+                            instrumental in my growth.</p>
                     </div>
                 </div>
                 <button class="nav-arrow prev-arrow" id="prevBtn">‹</button>
                 <button class="nav-arrow next-arrow" id="nextBtn">›</button>
             </div>
-            
+
             <div class="mentors-indicators">
                 <span class="indicator active" data-index="0"></span>
                 <span class="indicator" data-index="1"></span>
@@ -130,16 +148,16 @@
 
         function updateCarousel() {
             if (!cards.length) return;
-            
+
             cards.forEach((card, index) => {
                 card.className = 'mentor-card';
-                
+
                 let diff = index - currentIndex;
-                
+
                 // Handle wrapping for cycling
                 if (diff > totalCards / 2) diff -= totalCards;
                 if (diff < -totalCards / 2) diff += totalCards;
-                
+
                 if (diff === 0) {
                     card.classList.add('active');
                 } else if (diff === -1) {
@@ -154,7 +172,7 @@
                     card.classList.add('hidden');
                 }
             });
-            
+
             // Update indicators
             if (indicators.length) {
                 indicators.forEach((indicator, index) => {
@@ -182,17 +200,17 @@
         if (nextBtn) {
             nextBtn.addEventListener('click', nextSlide);
         }
-        
+
         if (prevBtn) {
             prevBtn.addEventListener('click', prevSlide);
         }
-        
+
         if (indicators.length) {
             indicators.forEach((indicator, index) => {
                 indicator.addEventListener('click', () => goToSlide(index));
             });
         }
-        
+
         if (cards.length) {
             cards.forEach((card, index) => {
                 card.addEventListener('click', () => {
@@ -212,20 +230,20 @@
         // Touch/Swipe support
         let startX = 0;
         let startY = 0;
-        
+
         const mentorsGrid = document.querySelector('.mentors-grid');
         if (mentorsGrid) {
             mentorsGrid.addEventListener('touchstart', (e) => {
                 startX = e.touches[0].clientX;
                 startY = e.touches[0].clientY;
             }, { passive: true });
-            
+
             mentorsGrid.addEventListener('touchend', (e) => {
                 const endX = e.changedTouches[0].clientX;
                 const endY = e.changedTouches[0].clientY;
                 const diffX = startX - endX;
                 const diffY = startY - endY;
-                
+
                 // Only trigger if horizontal swipe is more significant than vertical
                 if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
                     if (diffX > 0) {
@@ -236,19 +254,19 @@
                 }
             }, { passive: true });
         }
-        
+
         // Auto-play cycling
         let autoPlay = setInterval(() => {
             nextSlide();
         }, 4000);
-        
+
         // Pause on hover
         const mentorsSection = document.getElementById('mentors');
         if (mentorsSection) {
             mentorsSection.addEventListener('mouseenter', () => {
                 clearInterval(autoPlay);
             });
-            
+
             mentorsSection.addEventListener('mouseleave', () => {
                 autoPlay = setInterval(() => {
                     nextSlide();
@@ -271,4 +289,5 @@
         });
     </script>
 </body>
+
 </html>
