@@ -15,6 +15,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap"
         rel="stylesheet">
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 </head>
 
 <body>
@@ -54,8 +57,20 @@
             if (loader) loader.classList.add('hidden');
         });
 
-        // --- LIVE APPS SCRIPT URL ---
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzZRbieXMXOSwH_IokJ15ZxoATihW3puBj_zmaUQF4nyVYxOay93Sy__C25ao8HrSfR/exec';
+        // --- FIREBASE CONFIGURATION ---
+        const firebaseConfig = {
+            apiKey: "AIzaSyAJco78wnwXIuvEHlVQEprZuA1BpkEykkg",
+            authDomain: "my-portfolio-d1b18.firebaseapp.com",
+            projectId: "my-portfolio-d1b18",
+            storageBucket: "my-portfolio-d1b18.firebasestorage.app",
+            messagingSenderId: "1082170997296",
+            appId: "1:1082170997296:web:04b7efa6da70168f610bf5",
+            measurementId: "G-RNRTHVFTNX"
+        };
+
+        // Initialize Firebase
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
         async function fetchProjectDetails() {
             const params = new URLSearchParams(window.location.search);
@@ -63,62 +78,48 @@
             const container = document.getElementById('project-details-container');
 
             if (!projectId) {
-                container.innerHTML = '<div class="error-msg">Project not found. Redirecting to home...</div>';
-                setTimeout(() => window.location.href = 'index.html', 3000);
+                container.innerHTML = '<div class="error-msg">Missing project identifier. Redirecting...</div>';
+                setTimeout(() => window.location.href = 'projects.html', 3000);
                 return;
             }
 
-            // Fallback: Check local storage first (fast load) BUT still try to fetch
-            const cachedData = localStorage.getItem('portfolio_projects');
-            if (cachedData) {
-                const projects = JSON.parse(cachedData);
-                const project = projects.find(p => p.id == projectId);
-                if (project) renderProject(project);
-            }
-
             try {
-                const response = await fetch(SCRIPT_URL);
-                const projects = await response.json();
+                console.log(`🔍 Querying Cloud DB for Project: ${projectId}`);
+                const doc = await db.collection('projects').doc(projectId).get();
 
-                const project = projects.find(p => p.id == projectId);
-                if (project) {
-                    renderProject(project); // Update with fresh data
+                if (doc.exists) {
+                    renderProject(doc.data());
                 } else {
-                    if (!cachedData) throw new Error("Project not found in sheet");
+                    console.error("❌ Document not found in 'projects' collection.");
+                    container.innerHTML = `<div class="error-msg">Project not found in our records.</div>`;
                 }
 
             } catch (error) {
-                console.error('Error:', error);
-                if (!container.innerHTML.includes('details-hero')) {
-                    container.innerHTML = `<div class="error-msg">Error loading project. Please check connection.</div>`;
-                }
+                console.error('❌ Firebase Error:', error);
+                container.innerHTML = `<div class="error-msg">Error connecting to cloud database. Please try again later.</div>`;
             }
         }
 
         function renderProject(project) {
             const container = document.getElementById('project-details-container');
 
-            // Clean up list data (handle spaces and empty entries)
-            const techStack = project.techstack
-                ? project.techstack.toString().split(',').map(t => t.trim()).filter(t => t !== "")
+            // Handle Tech Stack (Support CSV string or Array)
+            const techItems = project.techstack
+                ? project.techstack.toString().split(',').map(t => t.trim())
                 : [];
 
+            // Handle Gallery Images (Support CSV string or Array)
             const galleryImages = project.moreimages
-                ? project.moreimages.toString().split(',').map(img => img.trim()).filter(img => img !== "")
+                ? project.moreimages.toString().split(',').map(img => img.trim())
                 : [];
-
-            // Ensure project link is valid
-            const projectLink = (project.projectlink && project.projectlink.toString().startsWith('http'))
-                ? project.projectlink
-                : '#';
 
             container.innerHTML = `
                 <div class="details-hero" style="background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('${project.mainimageurl || 'asserts/images/new backround image.jpg'}') center/cover;">
                     <div class="container">
-                        <span class="category-badge">${project.category || 'Portfolio'}</span>
-                        <h1 class="project-title">${project.projecttitle}</h1>
+                        <span class="category-badge">${project.category || 'Portfolio Edition'}</span>
+                        <h1 class="project-title">${project.projecttitle || project.title || 'Untitled Project'}</h1>
                         <div class="tech-tags">
-                            ${techStack.map(tech => `<span>${tech}</span>`).join('')}
+                            ${techItems.map(tech => `<span>${tech}</span>`).join('')}
                         </div>
                     </div>
                 </div>
@@ -126,14 +127,14 @@
                 <section class="details-content">
                     <div class="container project-main-grid">
                         <div class="description-side">
-                            <h2>The Challenge & Solution</h2>
-                            <p>${project.description}</p>
-                            ${projectLink !== '#' ? `
-                                <a href="${projectLink}" target="_blank" class="hero-cta">View Live Project</a>
+                            <h2>The Challenge & Innovation</h2>
+                            <p>${project.description || 'No description provided.'}</p>
+                            ${project.link ? `
+                                <a href="${project.link}" target="_blank" class="hero-cta">Explore Live Product</a>
                             ` : ''}
                         </div>
                         <div class="image-main">
-                            <img src="${project.mainimageurl}" alt="${project.projecttitle}" class="featured-img">
+                            <img src="${project.mainimageurl || ''}" alt="Featured Image" class="featured-img">
                         </div>
                     </div>
                 </section>
@@ -143,7 +144,11 @@
                     <div class="container">
                         <h2 class="section-title">Visual Showcase</h2>
                         <div class="gallery-grid">
-                            ${galleryImages.map(img => `<img src="${img}" alt="Gallery image" class="gallery-item">`).join('')}
+                            ${galleryImages.map(img => `
+                                <div class="gallery-card">
+                                    <img src="${img}" alt="Gallery Showcase" class="gallery-item">
+                                </div>
+                            `).join('')}
                         </div>
                     </div>
                 </section>
@@ -151,13 +156,13 @@
 
                 <section class="project-nav">
                     <div class="container">
-                        <a href="index.html#portfolio" class="back-link">← Back to All Projects</a>
+                        <a href="projects.html" class="back-link">← Back to Project Hub</a>
                     </div>
                 </section>
             `;
         }
 
-        // Initialize
+        // Initialize Fetch
         fetchProjectDetails();
 
         // Mobile menu toggle

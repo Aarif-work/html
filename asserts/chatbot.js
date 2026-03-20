@@ -1,17 +1,13 @@
-(function(){
-// Configuration
-const CONFIG = {
-  API_URL: 'https://aichatbot-s2fl.onrender.com/chat',
-  TITLE: "Aarif's AI Assistant",
-  BRAND_COLOR: '#d4af37',
-  ACCENT_COLOR: '#f4d03f',
-  RATE_LIMIT_MS: 800,
-  RETRY_DELAY_MS: 3000,
-  MAX_RETRIES: 2
-};
+(function () {
+  // Configuration
+  const CONFIG = {
+    TITLE: "Aarif's AI Assistant",
+    BRAND_COLOR: '#d4af37',
+    ACCENT_COLOR: '#f4d03f'
+  };
 
-// CSS Styles
-const styles = `
+  // CSS Styles
+  const styles = `
 .aarif-chatbot{position:fixed;bottom:20px;right:20px;z-index:10000;font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
 .aarif-btn{width:65px;height:65px;border-radius:50%;background:linear-gradient(135deg,${CONFIG.BRAND_COLOR},${CONFIG.ACCENT_COLOR});border:0;cursor:pointer;box-shadow:0 8px 32px rgba(212,175,55,.4),0 0 20px rgba(212,175,55,.2);display:flex;align-items:center;justify-content:center;transition:all .4s cubic-bezier(0.4,0,0.2,1);color:#0a0a0a;font-size:26px;position:relative;overflow:hidden}
 .aarif-btn::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(45deg,transparent,rgba(255,255,255,.2),transparent);transform:translateX(-100%);transition:transform .6s}
@@ -56,67 +52,58 @@ const styles = `
 @media (max-width:480px){.aarif-panel{width:calc(100vw - 40px);height:75vh;bottom:85px;right:20px;left:20px}.aarif-btn{width:60px;height:60px;font-size:24px}}
 `;
 
-// Utility functions
-function getSessionId() {
-  let sessionId = localStorage.getItem('aarif-chatbot-session');
-  if (!sessionId) {
-    sessionId = 'session_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    localStorage.setItem('aarif-chatbot-session', sessionId);
+  // Utility functions
+  function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
   }
-  return sessionId;
-}
 
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
+  function renderMarkdown(text) {
+    let html = escapeHtml(text);
 
-function renderMarkdown(text) {
-  let html = escapeHtml(text);
-  
-  // Code blocks
-  html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
-    return `<pre><code>${code.trim()}</code></pre>`;
-  });
-  
-  // Inline code
-  html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
-  
-  // Bold
-  html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
-  
-  // Italic
-  html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
-  
-  // Lists
-  html = html.replace(/^\* (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
-  html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
-  html = html.replace(/(<li>.*<\/li>)/s, '<ol>$1</ol>');
-  
-  // Line breaks
-  html = html.replace(/\n/g, '<br>');
-  
-  return html;
-}
+    // Code blocks
+    html = html.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+      return `<pre><code>${code.trim()}</code></pre>`;
+    });
 
-function copyToClipboard(text) {
-  navigator.clipboard?.writeText(text).then(() => {
-    // Could show a brief success indicator here
-  }).catch(() => {
-    // Fallback for older browsers
-    const textarea = document.createElement('textarea');
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-  });
-}
+    // Inline code
+    html = html.replace(/`([^`]+)`/g, '<code>$1</code>');
 
-// Main widget HTML
-const widgetHTML = `
+    // Bold
+    html = html.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+
+    // Italic
+    html = html.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+
+    // Lists
+    html = html.replace(/^\* (.+)$/gm, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>');
+    html = html.replace(/^\d+\. (.+)$/gm, '<li>$1</li>');
+    html = html.replace(/(<li>.*<\/li>)/s, '<ol>$1</ol>');
+
+    // Line breaks
+    html = html.replace(/\n/g, '<br>');
+
+    return html;
+  }
+
+  function copyToClipboard(text) {
+    navigator.clipboard?.writeText(text).then(() => {
+    }).catch(() => {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
+    });
+  }
+
+  // Main widget HTML
+  const widgetHTML = `
 <div class="aarif-chatbot">
   <button class="aarif-btn" id="aarif-toggle" aria-label="Open chat assistant" role="button">🤖</button>
   <div class="aarif-panel" id="aarif-panel" role="dialog" aria-labelledby="aarif-title" aria-hidden="true">
@@ -137,204 +124,122 @@ const widgetHTML = `
 </div>
 `;
 
-// Main initialization function
-function initChatbot() {
-  // Inject styles
-  const styleEl = document.createElement('style');
-  styleEl.textContent = styles;
-  document.head.appendChild(styleEl);
-  
-  // Inject HTML
-  document.body.insertAdjacentHTML('beforeend', widgetHTML);
-  
-  // Get DOM elements
-  const toggleBtn = document.getElementById('aarif-toggle');
-  const panel = document.getElementById('aarif-panel');
-  const closeBtn = document.getElementById('aarif-close');
-  const messages = document.getElementById('aarif-messages');
-  const input = document.getElementById('aarif-input');
-  const sendBtn = document.getElementById('aarif-send');
-  const typing = document.getElementById('aarif-typing');
-  const clearBtn = document.getElementById('aarif-clear');
-  
-  // State
-  let isOpen = false;
-  let messageQueue = [];
-  let isProcessing = false;
-  let lastSendTime = 0;
-  let hasShownWelcome = false;
-  const sessionId = getSessionId();
-  
-  // Functions
-  function togglePanel() {
-    isOpen = !isOpen;
-    panel.style.display = isOpen ? 'flex' : 'none';
-    panel.setAttribute('aria-hidden', !isOpen);
-    
-    if (isOpen) {
-      input.focus();
-      if (!hasShownWelcome) {
-        addMessage("🚀 **AI Assistant - Coming Soon!**\n\nI'm currently being developed to help answer questions about Aarif's *skills*, *projects*, and *experience*. \n\n✨ **Features in development:**\n• Smart Q&A about portfolio\n• Project deep-dives\n• Technical expertise insights\n\n🎯 Stay tuned for the launch!", false);
-        hasShownWelcome = true;
+  // Main initialization function
+  function initChatbot() {
+    const styleEl = document.createElement('style');
+    styleEl.textContent = styles;
+    document.head.appendChild(styleEl);
+    document.body.insertAdjacentHTML('beforeend', widgetHTML);
+
+    const toggleBtn = document.getElementById('aarif-toggle');
+    const panel = document.getElementById('aarif-panel');
+    const closeBtn = document.getElementById('aarif-close');
+    const messages = document.getElementById('aarif-messages');
+    const input = document.getElementById('aarif-input');
+    const sendBtn = document.getElementById('aarif-send');
+    const typing = document.getElementById('aarif-typing');
+    const clearBtn = document.getElementById('aarif-clear');
+
+    let isOpen = false;
+    let hasShownWelcome = false;
+
+    function togglePanel() {
+      isOpen = !isOpen;
+      panel.style.display = isOpen ? 'flex' : 'none';
+      panel.setAttribute('aria-hidden', !isOpen);
+
+      if (isOpen) {
+        input.focus();
+        if (!hasShownWelcome) {
+          addMessage("🚀 **AI Assistant - Visual Preview**\n\nI'm currently being developed to help answer questions about Aarif's *skills*, *projects*, and *experience*. \n\n✨ **Status:** UI Active | Backend Integration Pending\n\n🎯 Stay tuned for the live launch!", false);
+          hasShownWelcome = true;
+        }
       }
     }
-  }
-  
-  function addMessage(content, isUser = false) {
-    const msgEl = document.createElement('div');
-    msgEl.className = `aarif-msg ${isUser ? 'user' : 'bot'}`;
-    msgEl.setAttribute('role', 'article');
-    
-    if (isUser) {
-      msgEl.textContent = content;
-    } else {
-      msgEl.innerHTML = renderMarkdown(content);
-      
-      // Add copy buttons to code blocks
-      const codeBlocks = msgEl.querySelectorAll('pre code');
-      codeBlocks.forEach(block => {
-        const copyBtn = document.createElement('button');
-        copyBtn.className = 'aarif-copy-btn';
-        copyBtn.textContent = 'Copy';
-        copyBtn.onclick = () => copyToClipboard(block.textContent);
-        block.parentElement.style.position = 'relative';
-        block.parentElement.appendChild(copyBtn);
-      });
-    }
-    
-    messages.appendChild(msgEl);
-    messages.scrollTop = messages.scrollHeight;
-  }
-  
-  function showTyping(show = true) {
-    typing.style.display = show ? 'block' : 'none';
-    if (show) {
+
+    function addMessage(content, isUser = false) {
+      const msgEl = document.createElement('div');
+      msgEl.className = `aarif-msg ${isUser ? 'user' : 'bot'}`;
+      msgEl.setAttribute('role', 'article');
+
+      if (isUser) {
+        msgEl.textContent = content;
+      } else {
+        msgEl.innerHTML = renderMarkdown(content);
+        const codeBlocks = msgEl.querySelectorAll('pre code');
+        codeBlocks.forEach(block => {
+          const copyBtn = document.createElement('button');
+          copyBtn.className = 'aarif-copy-btn';
+          copyBtn.textContent = 'Copy';
+          copyBtn.onclick = () => copyToClipboard(block.textContent);
+          block.parentElement.style.position = 'relative';
+          block.parentElement.appendChild(copyBtn);
+        });
+      }
+
+      messages.appendChild(msgEl);
       messages.scrollTop = messages.scrollHeight;
     }
-  }
-  
-  async function sendMessage(message, retryCount = 0) {
-    try {
-      showTyping(true);
-      
-      const response = await fetch(CONFIG.API_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, session_id: sessionId })
-      });
-      
-      showTyping(false);
-      
-      if (!response.ok) {
-        throw new Error(`HTTP ${response.status}`);
-      }
-      
-      const data = await response.json();
-      addMessage(data.reply || 'Sorry, I could not process your request.');
-      
-    } catch (error) {
-      console.error('Chatbot API Error:', error);
-      showTyping(false);
-      
-      // Handle cold start or server errors with retry
-      if (retryCount < CONFIG.MAX_RETRIES && (
-        error.message.includes('fetch') || 
-        error.message.includes('Network') ||
-        error.message.includes('500') ||
-        error.message.includes('502') ||
-        error.message.includes('503')
-      )) {
-        addMessage('Waking the server… this may take a moment');
-        setTimeout(() => {
-          // Remove the "waking server" message
-          const lastMsg = messages.lastElementChild;
-          if (lastMsg && lastMsg.textContent.includes('Waking the server')) {
-            messages.removeChild(lastMsg);
-          }
-          sendMessage(message, retryCount + 1);
-        }, CONFIG.RETRY_DELAY_MS);
-      } else {
-        addMessage('Sorry, I encountered an error. Please try again in a moment.');
-      }
-    }
-  }
-  
-  async function processMessageQueue() {
-    if (isProcessing || messageQueue.length === 0) return;
-    
-    isProcessing = true;
-    const message = messageQueue.shift();
-    
-    await sendMessage(message);
-    
-    isProcessing = false;
-    
-    // Process next message if any
-    if (messageQueue.length > 0) {
-      setTimeout(processMessageQueue, 100);
-    }
-  }
-  
-  function handleSend() {
-    const message = input.value.trim();
-    if (!message) return;
-    
-    addMessage(message, true);
-    input.value = '';
-    input.style.height = 'auto';
-    
-    // Show coming soon message
-    setTimeout(() => {
-      addMessage("✨ **Thanks for your interest!** \n\nThe AI assistant is coming soon with exciting features. For now, please explore the portfolio sections above to learn about Aarif's work.\n\n🔍 **What you can explore:**\n• Portfolio projects\n• Achievements & certifications\n• Technical skills\n• Mentor network", false);
-    }, 500);
-  }
-  
-  function clearChat() {
-    const botMessages = messages.querySelectorAll('.aarif-msg');
-    botMessages.forEach(msg => msg.remove());
-    hasShownWelcome = false;
-  }
-  
-  function autoResize() {
-    input.style.height = 'auto';
-    input.style.height = Math.min(input.scrollHeight, 80) + 'px';
-  }
-  
-  // Event listeners
-  toggleBtn.onclick = togglePanel;
-  closeBtn.onclick = togglePanel;
-  sendBtn.onclick = handleSend;
-  clearBtn.onclick = clearChat;
-  
-  input.addEventListener('input', autoResize);
-  
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      handleSend();
-    }
-  });
-  
-  // Close on outside click
-  document.addEventListener('click', (e) => {
-    if (isOpen && !panel.contains(e.target) && !toggleBtn.contains(e.target)) {
-      togglePanel();
-    }
-  });
-  
-  // Escape key to close
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && isOpen) {
-      togglePanel();
-    }
-  });
-}
 
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initChatbot);
-} else {
-  initChatbot();
-}
+    function handleSend() {
+      const message = input.value.trim();
+      if (!message) return;
+
+      addMessage(message, true);
+      input.value = '';
+      input.style.height = 'auto';
+
+      // Simulated Response
+      typing.style.display = 'block';
+      messages.scrollTop = messages.scrollHeight;
+
+      setTimeout(() => {
+        typing.style.display = 'none';
+        addMessage("✨ **Thanks for testing the UI!** \n\nThe live AI backend is currently being optimized. For now, please explore the portfolio sections to learn about Aarif's work.\n\n🔍 **What's coming:**\n• Intelligent project analysis\n• Tech-stack deep dives\n• Automated resume insights", false);
+      }, 1000);
+    }
+
+    function clearChat() {
+      messages.innerHTML = '';
+      hasShownWelcome = false;
+      togglePanel();
+      setTimeout(togglePanel, 100);
+    }
+
+    function autoResize() {
+      input.style.height = 'auto';
+      input.style.height = Math.min(input.scrollHeight, 80) + 'px';
+    }
+
+    toggleBtn.onclick = togglePanel;
+    closeBtn.onclick = togglePanel;
+    sendBtn.onclick = handleSend;
+    clearBtn.onclick = clearChat;
+    input.addEventListener('input', autoResize);
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        handleSend();
+      }
+    });
+
+    document.addEventListener('click', (e) => {
+      if (isOpen && !panel.contains(e.target) && !toggleBtn.contains(e.target)) {
+        togglePanel();
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        togglePanel();
+      }
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initChatbot);
+  } else {
+    initChatbot();
+  }
 
 })();
