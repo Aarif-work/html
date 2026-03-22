@@ -58,6 +58,37 @@
     }
 }
 
+/* Page Loader Styles */
+.page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.page-loader.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loader-text {
+    margin-top: 1.5rem;
+    color: var(--accent-gold);
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -806,13 +837,9 @@ section {
 
     .contact-content {
         flex-direction: column;
-        gap: 2rem;
-        text-align: center;
-    }
-
-    .contact-content {
-        padding: 1.5rem;
         gap: 2.5rem;
+        text-align: center;
+        padding: 1.5rem;
     }
 
     .contact-profile-img {
@@ -878,18 +905,21 @@ section {
 
 /* Achievements Page Styles */
 #achievements-hero {
-    height: 60vh;
+    min-height: 60vh;
+    height: auto;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
         url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 80px;
+    padding: 3rem 0;
 }
 
 /* Mentors Page Styles */
 #mentors-hero {
-    height: 60vh;
+    min-height: 60vh;
+    height: auto;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
         url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
     display: flex;
@@ -898,6 +928,7 @@ section {
     margin-top: 80px;
     position: relative;
     overflow: hidden;
+    padding: 3rem 0;
 }
 
 .hero-overlay {
@@ -1115,20 +1146,6 @@ section {
     font-size: 0.95rem;
 }
 
-itle {
-    color: var(--accent-gold);
-    font-weight: 600;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
-    line-height: 1.4;
-}
-
-.mentor-note {
-    color: var(--text-secondary);
-    line-height: 1.7;
-    font-size: 0.95rem;
-}
-
 .nav-arrow {
     position: absolute;
     top: 50%;
@@ -1295,8 +1312,10 @@ itle {
     }
 
     #mentors-hero {
-        height: 50vh;
+        min-height: 50vh;
+        height: auto;
         margin-top: 70px;
+        padding: 4rem 0;
     }
 
     .mentors-grid {
@@ -1381,7 +1400,9 @@ itle {
     }
 
     #mentors-hero {
-        height: 45vh;
+        min-height: 45vh;
+        height: auto;
+        padding: 3rem 0;
     }
 
     .hero-content {

@@ -6,11 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects - Mohamed Aarif</title>
 
-    <!-- Firebase SDKs -->
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics-compat.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <meta name="description"
         content="A collection of technologies and development areas I work with to build modern applications, games, and intelligent systems.">
@@ -1509,16 +1504,7 @@
             });
         }
 
-        // --- FIREBASE INITIALIZATION & DATA FETCHING ---
-        const firebaseConfig = {
-            apiKey: "AIzaSyAJco78wnwXIuvEHlVQEprZuA1BpkEykkg",
-            authDomain: "my-portfolio-d1b18.firebaseapp.com",
-            projectId: "my-portfolio-d1b18",
-            storageBucket: "my-portfolio-d1b18.firebasestorage.app",
-            messagingSenderId: "1082170997296",
-            appId: "1:1082170997296:web:04b7efa6da70168f610bf5",
-            measurementId: "G-RNRTHVFTNX"
-        };
+
 
         // --- PROJECTS DATA & RENDERING ---
         const PROJECTS_DATA = [
@@ -1823,15 +1809,7 @@ Instead of spending money randomly, this feature turns that moment into a saving
         }
 
         // Initial setup
-        try {
-            if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
-            // Note: Project synchronization from Firebase has been disabled per user request.
-            // Old project data is replaced by the local PROJECTS_DATA array.
-            renderProjects(PROJECTS_DATA);
-        } catch (e) {
-            console.error("Firebase/Init Error:", e);
-            renderProjects(PROJECTS_DATA); // Fallback
-        }
+        renderProjects(PROJECTS_DATA);
 
 
         // --- ENHANCED PAGINATION DOTS LOGIC ---
