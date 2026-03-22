@@ -69,54 +69,115 @@
 
     <section id="portfolio">
         <div class="container">
-            <h2 class="section-title">Projects</h2>
-            <div class="portfolio-grid">
-                <div class="portfolio-card featured">
-                    <div class="card-header">
-                        <div class="project-icon">🎨</div>
-                        <span class="project-status">Featured</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>UI/UX & Figma Design</h3>
-                        <p>Architecting stunning mobile app and website prototypes in Figma. Focused on user-centric
-                            design, micro-interactions, and high-fidelity wireframes.</p>
-                        <div class="tech-stack">
-                            <span>Figma</span>
-                            <span>Prototyping</span>
-                            <span>User Research</span>
+            <h2 class="section-title">What I'm Strong At</h2>
+            <div class="skills-intro"
+                style="text-align: center; max-width: 850px; margin: 0 auto 3rem auto; color: var(--text-secondary); line-height: 1.8; font-size: 1.1rem; font-style: italic;">
+                <p>I love learning and using new technologies. I specialize in building full-stack apps, designing clean
+                    user interfaces, and working with tools like computer vision and game engines to create great
+                    digital experiences.</p>
+            </div>
+
+            <!-- Floating Grid Icons styled like projects page -->
+            <div class="skills-container" style="margin-top: 0;">
+                <div class="skills-grid">
+                    <!-- Frontend Development -->
+                    <div class="skill-card skill-frontend highlighted" onclick="window.location.href='projects.html'"
+                        style="cursor: pointer;">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                                <line x1="8" y1="21" x2="16" y2="21"></line>
+                                <line x1="12" y1="17" x2="12" y2="21"></line>
+                            </svg>
                         </div>
+                        <span class="skill-title">Frontend<br>Development</span>
                     </div>
-                </div>
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="project-icon">💻</div>
-                        <span class="project-status">Expert</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>Full-stack Development</h3>
-                        <p>Bridging the gap between robust backend systems and intuitive frontend interfaces using
-                            modern frameworks and performance-first architectures.</p>
-                        <div class="tech-stack">
-                            <span>Frontend</span>
-                            <span>Backend</span>
-                            <span>API Design</span>
+
+                    <!-- Backend Development -->
+                    <div class="skill-card skill-backend highlighted" onclick="window.location.href='projects.html'"
+                        style="cursor: pointer;">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+                            </svg>
                         </div>
+                        <span class="skill-title">Backend<br>Development</span>
                     </div>
-                </div>
-                <div class="portfolio-card">
-                    <div class="card-header">
-                        <div class="project-icon">📱</div>
-                        <span class="project-status">Active</span>
-                    </div>
-                    <div class="card-content">
-                        <h3>Flutter Development</h3>
-                        <p>Crafting high-performance, cross-platform mobile experiences with Flutter. Integrating
-                            complex APIs and ensuring smooth animations.</p>
-                        <div class="tech-stack">
-                            <span>Flutter</span>
-                            <span>Dart</span>
-                            <span>Firebase</span>
+
+                    <!-- UI / UX Design -->
+                    <div class="skill-card skill-uiux highlighted" onclick="window.location.href='projects.html'"
+                        style="cursor: pointer;">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="13.5" cy="6.5" r=".5" />
+                                <circle cx="17.5" cy="10.5" r=".5" />
+                                <circle cx="8.5" cy="7.5" r=".5" />
+                                <circle cx="6.5" cy="12.5" r=".5" />
+                                <path
+                                    d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z" />
+                            </svg>
                         </div>
+                        <span class="skill-title">UI / UX<br>Design</span>
+                    </div>
+
+                    <!-- Game Development -->
+                    <div class="skill-card skill-gamedev" onclick="window.location.href='projects.html'"
+                        style="cursor: pointer;">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="6" y1="12" x2="10" y2="12"></line>
+                                <line x1="8" y1="10" x2="8" y2="14"></line>
+                                <line x1="15" y1="13" x2="15.01" y2="13"></line>
+                                <line x1="18" y1="11" x2="18.01" y2="11"></line>
+                                <path d="M22 12A10 10 0 0 0 12 2 10 10 0 0 0 2 12c0 4.14 5 7 5 7l2-2h6l2 2s5-2.86 5-7z">
+                                </path>
+                            </svg>
+                        </div>
+                        <span class="skill-title">Game<br>Development</span>
+                    </div>
+
+                    <!-- Computer Vision -->
+                    <div class="skill-card skill-cv" onclick="window.location.href='projects.html'"
+                        style="cursor: pointer;">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M3 9V6a2 2 0 0 1 2-2h3" />
+                                <path d="M21 9V6a2 2 0 0 0-2-2h-3" />
+                                <path d="M3 15v3a2 2 0 0 0 2 2h3" />
+                                <path d="M21 15v3a2 2 0 0 1-2 2h-3" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                        </div>
+                        <span class="skill-title">Computer<br>Vision</span>
+                    </div>
+
+                    <!-- Internet of Things -->
+                    <div class="skill-card skill-iot" onclick="window.location.href='projects.html'"
+                        style="cursor: pointer;">
+                        <div class="skill-icon">
+                            <svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2"
+                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                                <rect x="9" y="9" width="6" height="6"></rect>
+                                <line x1="9" y1="1" x2="9" y2="4"></line>
+                                <line x1="15" y1="1" x2="15" y2="4"></line>
+                                <line x1="9" y1="20" x2="9" y2="23"></line>
+                                <line x1="15" y1="20" x2="15" y2="23"></line>
+                                <line x1="20" y1="9" x2="23" y2="9"></line>
+                                <line x1="20" y1="14" x2="23" y2="14"></line>
+                                <line x1="1" y1="9" x2="4" y2="9"></line>
+                                <line x1="1" y1="14" x2="4" y2="14"></line>
+                            </svg>
+                        </div>
+                        <span class="skill-title">Internet of<br>Things (IoT)</span>
                     </div>
                 </div>
             </div>
