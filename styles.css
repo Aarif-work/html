@@ -188,7 +188,8 @@ nav {
 
 /* Hero Section */
 #hero {
-    height: 90vh;
+    min-height: 90vh;
+    height: auto;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
         url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
     display: flex;
@@ -196,6 +197,8 @@ nav {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    padding-top: 150px;
+    padding-bottom: 80px;
 }
 
 .hero-overlay {
@@ -1319,31 +1322,48 @@ section {
     }
 
     .mentors-grid {
-        height: 380px;
-        padding: 0 1rem;
+        height: 500px;
+        padding: 40px 0;
+        position: relative;
+        overflow: hidden;
+        display: block;
     }
 
     .mentor-card {
-        width: 240px;
-        height: 340px;
+        width: 260px;
+        height: 380px;
+        position: absolute;
+        left: 50%;
+        margin-left: -130px;
+        transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
 
     .mentor-card.active {
-        transform: translateX(0) scale(1.05);
+        transform: scale(1.05);
+        z-index: 10;
+        box-shadow: 0 20px 40px rgba(212, 175, 55, 0.4), 0 0 30px rgba(212, 175, 55, 0.2);
+        border-color: var(--accent-gold);
+        opacity: 1;
+        display: block;
     }
 
     .mentor-card.left-1 {
-        transform: translateX(-180px) scale(0.75);
+        transform: translateX(-160px) scale(0.8);
         opacity: 0.6;
+        display: block;
+        z-index: 5;
     }
 
     .mentor-card.right-1 {
-        transform: translateX(180px) scale(0.75);
+        transform: translateX(160px) scale(0.8);
         opacity: 0.6;
+        display: block;
+        z-index: 5;
     }
 
     .mentor-card.left-2,
-    .mentor-card.right-2 {
+    .mentor-card.right-2,
+    .mentor-card.hidden {
         display: none;
     }
 
@@ -1420,13 +1440,13 @@ section {
     }
 
     .mentors-grid {
-        height: 320px;
-        padding: 0 0.5rem;
+        height: 450px;
     }
 
     .mentor-card {
-        width: 200px;
-        height: 300px;
+        width: 220px;
+        height: 320px;
+        margin-left: -110px;
     }
 
     .mentor-card.active {

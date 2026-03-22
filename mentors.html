@@ -197,13 +197,8 @@
         }
 
         // Event listeners with error handling
-        if (nextBtn) {
-            nextBtn.addEventListener('click', nextSlide);
-        }
-
-        if (prevBtn) {
-            prevBtn.addEventListener('click', prevSlide);
-        }
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
 
         if (indicators.length) {
             indicators.forEach((indicator, index) => {
@@ -244,20 +239,16 @@
                 const diffX = startX - endX;
                 const diffY = startY - endY;
 
-                // Only trigger if horizontal swipe is more significant than vertical
                 if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 30) {
-                    if (diffX > 0) {
-                        nextSlide();
-                    } else {
-                        prevSlide();
-                    }
+                    if (diffX > 0) nextSlide();
+                    else prevSlide();
                 }
             }, { passive: true });
         }
 
         // Auto-play cycling
         let autoPlay = setInterval(() => {
-            nextSlide();
+            if (window.innerWidth > 768) nextSlide();
         }, 4000);
 
         // Pause on hover
