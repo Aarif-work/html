@@ -237,6 +237,7 @@ nav {
 }
 
 .hero-cta {
+    margin-top: 2rem;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
