@@ -710,6 +710,8 @@
         }
 
         .news-cutting {
+            display: flex;
+            flex-direction: column;
             background: #1a1a1a;
             /* Dark Paper */
             padding: 2.5rem;
@@ -775,24 +777,34 @@
         }
 
         .news-content {
-            column-count: 2;
-            /* Newspaper Columns */
-            column-gap: 1.2rem;
+            /* Replacing columns with line-clamp for strict height control */
             text-align: justify;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .news-content p {
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
             line-height: 1.6;
-            color: #ccc;
+            color: #bbb;
             margin: 0;
+
+            /* Truncate text after 4 lines with '...' */
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         /* Read More Link like a small classified */
         .news-link {
             display: inline-block;
-            margin-top: 1.5rem;
+            margin-top: auto;
+            /* Pushes to bottom */
+            align-self: flex-start;
             font-family: 'Inter', sans-serif;
             font-weight: 900;
             text-transform: uppercase;
