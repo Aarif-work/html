@@ -49,7 +49,7 @@
 .aarif-controls{display:flex;gap:12px;padding:0 24px 20px;justify-content:center}
 .aarif-clear{background:transparent;border:2px solid #333;color:#ccc;padding:8px 16px;border-radius:20px;font-size:12px;cursor:pointer;transition:all .3s;font-weight:500}
 .aarif-clear:hover{border-color:${CONFIG.BRAND_COLOR};color:${CONFIG.BRAND_COLOR};transform:translateY(-2px);box-shadow:0 4px 8px rgba(212,175,55,.2)}
-@media (max-width:480px){.aarif-panel{width:calc(100vw - 40px);height:75vh;bottom:85px;right:20px;left:20px}.aarif-btn{width:60px;height:60px;font-size:24px}}
+@media (max-width:480px){.aarif-panel{position:fixed;width:calc(100vw - 40px);height:75vh;bottom:85px;right:20px;left:auto;margin:0;transform:none}.aarif-btn{width:60px;height:60px;font-size:24px}}
 `;
 
   // Utility functions

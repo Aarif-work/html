@@ -114,7 +114,7 @@
                 : [];
 
             container.innerHTML = `
-                <div class="details-hero" style="background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('${project.mainimageurl || 'asserts/images/new backround image.jpg'}') center/cover;">
+                <div class="details-hero" style="background: linear-gradient(rgba(10,10,10,0.8), rgba(10,10,10,0.9)), url('${project.mainimageurl || 'asserts/images/background.png'}') center/cover;">
                     <div class="container">
                         <span class="category-badge">${project.category || 'Portfolio Edition'}</span>
                         <h1 class="project-title">${project.projecttitle || project.title || 'Untitled Project'}</h1>
@@ -164,6 +164,16 @@
 
         // Initialize Fetch
         fetchProjectDetails();
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
 
         // Mobile menu toggle
         const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');

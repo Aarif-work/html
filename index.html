@@ -47,10 +47,8 @@
         </nav>
     </header>
 
-    <section id="hero" style="min-height: 85vh; height: 85vh;">
-        <div class="hero-profile-overlay">
-            <img src="asserts/images/profile without backround.png" alt="Mohamed Aarif" class="hero-profile-bg">
-        </div>
+    <section id="hero">
+
         <div class="hero-overlay">
             <div class="hero-content">
                 <h1 class="hero-name">Mohamed Aarif</h1>
@@ -277,6 +275,16 @@
         window.addEventListener('load', () => {
             const loader = document.getElementById('pageLoader');
             loader.classList.add('hidden');
+        });
+
+        // Header scroll effect
+        const header = document.querySelector('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
         });
 
         // Mobile menu toggle

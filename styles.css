@@ -107,6 +107,12 @@ header {
     top: 0;
     width: 100%;
     z-index: 1000;
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: background 0.4s ease, backdrop-filter 0.4s ease, border-bottom 0.4s ease;
+}
+
+header.scrolled {
     background: rgba(10, 10, 10, 0.95);
     backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border-subtle);
@@ -188,10 +194,10 @@ nav {
 
 /* Hero Section */
 #hero {
-    min-height: 90vh;
-    height: auto;
+    min-height: 100vh;
+    height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
-        url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
+        url('asserts/images/background.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -909,30 +915,30 @@ section {
 
 /* Achievements Page Styles */
 #achievements-hero {
-    min-height: 60vh;
-    height: auto;
+    min-height: 100vh;
+    height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-        url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
+        url('asserts/images/background.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 80px;
-    padding: 3rem 0;
+    margin-top: 0;
+    padding-top: 150px;
 }
 
 /* Mentors Page Styles */
 #mentors-hero {
-    min-height: 60vh;
-    height: auto;
+    min-height: 100vh;
+    height: 100vh;
     background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.7)),
-        url('asserts/images/new\ backround\ image.jpg') center/cover no-repeat;
+        url('asserts/images/background.png') center/cover no-repeat;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 80px;
+    margin-top: 0;
     position: relative;
     overflow: hidden;
-    padding: 3rem 0;
+    padding-top: 150px;
 }
 
 .hero-overlay {
@@ -1301,8 +1307,8 @@ section {
     }
 
     #hero {
-        height: 80vh;
-        margin-top: 70px;
+        height: 100vh;
+        background-position: center, 20% center;
     }
 
     .hero-profile-overlay {
@@ -1315,11 +1321,11 @@ section {
         object-position: center top;
     }
 
-    #mentors-hero {
-        min-height: 50vh;
-        height: auto;
-        margin-top: 70px;
-        padding: 4rem 0;
+    #mentors-hero,
+    #achievements-hero {
+        height: 100vh;
+        margin-top: 0;
+        background-position: center, 20% center;
     }
 
     .mentors-grid {
@@ -1407,7 +1413,8 @@ section {
     }
 
     #hero {
-        height: 70vh;
+        height: 100vh;
+        background-position: center, 20% center;
     }
 
     .hero-profile-overlay {
@@ -1420,10 +1427,10 @@ section {
         z-index: 3;
     }
 
-    #mentors-hero {
-        min-height: 45vh;
-        height: auto;
-        padding: 3rem 0;
+    #mentors-hero,
+    #achievements-hero {
+        height: 100vh;
+        background-position: center, 20% center;
     }
 
     .hero-content {
